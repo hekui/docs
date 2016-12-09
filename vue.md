@@ -14,50 +14,50 @@ vue学习记录之组件，包括:
 ##使用组件
 ###注册
 注册一个全局组件，你可以使用 `Vue.component(tagName, options)` 。 例如：
-
-    Vue.component('my-component', {
+```javascript
+Vue.component('my-component', {
     // 选项
-    })
-
+})
+```
 组件在注册之后，便可以在父实例的模块中以自定义元素 `<my-component></my-component>` 的形式使用。要确保在初始化根实例 **之前** 注册了组件。html：  
 ```html
-    <div id="example">
-        <my-component></my-component>
-    </div>
+<div id="example">
+    <my-component></my-component>
+</div>
 ```
 JS:
 ```javascript
-    // 注册
-    Vue.component('my-component', {
-      template: '<div>A custom component!</div>'
-    })
-    
-    // 创建根实例
-    new Vue({
-      el: '#example'
-    })
+// 注册
+Vue.component('my-component', {
+  template: '<div>A custom component!</div>'
+})
+
+// 创建根实例
+new Vue({
+  el: '#example'
+})
 ```
 渲染为：
 ```html
-    <div id="example">
-      <div>A custom component!</div>
-    </div>
+<div id="example">
+  <div>A custom component!</div>
+</div>
 ```
 ###局部注册
 
 不必在全局注册每个组件。通过使用组件实例选项注册，可以使组件仅在另一个实例/组件的作用域中可用：
 ```javascript
-    var Child = {
-      template: '<div>A custom component!</div>'
-    }
+var Child = {
+  template: '<div>A custom component!</div>'
+}
 
-    new Vue({
-      // ...
-      components: {
-        // <my-component> 将只在父模板可用
-        'my-component': Child
-      }
-    })
+new Vue({
+  // ...
+  components: {
+    // <my-component> 将只在父模板可用
+    'my-component': Child
+  }
+})
 ```
 这种封装也适用于其它可注册的 Vue 功能，如指令。
 ###DOM 模版解析说明
@@ -66,15 +66,15 @@ JS:
 
 在自定义组件中使用这些受限制的元素时会导致一些问题，例如：
 ```html
-	<table>
-  	<my-row>...</my-row>
-	</table>
+<table>
+  <my-row>...</my-row>
+</table>
 ```
 自定义组件 `<my-row>` 被认为是无效的内容，因此在渲染的时候会导致错误。变通的方案是使用特殊的 is 属性：
 ```html
-	<table>
-	  <tr is="my-row"></tr>
-	</table>
+<table>
+  <tr is="my-row"></tr>
+</table>
 ```
 应当注意，如果您使用来自以下来源之一的字符串模板，这些限制将不适用：
 
@@ -148,39 +148,42 @@ Vue.component('child', {
 </div>
 ```
 使用 `v-bind` 的缩写语法通常更简单：
-
-    <child :my-message="parentMsg"></child>
-
+```html
+<child :my-message="parentMsg"></child>
+```
 > **camelCase vs. kebab-case**
 > 
 > HTML 特性不区分大小写。当使用非字符串模版时，`prop` 的名字形式会从 `camelCase` 转为
 > `kebab-case`（短横线隔开）：
-> 
->     Vue.component('child', {
->       // camelCase in JavaScript
->       props: ['myMessage'],
->       template: '<span>{{ myMessage }}</span>'
->     }) 
+> ```javascript
+> Vue.component('child', {
+>   // camelCase in JavaScript
+>   props: ['myMessage'],
+>   template: '<span>{{ myMessage }}</span>'
+> }) 
+> ```
 > html (注意下面是 `my-message` )
-> 
->     <!-- kebab-case in HTML -->
->     <child my-message="hello!"></child>
->
+> ```html
+> <!-- kebab-case in HTML -->
+> <child my-message="hello!"></child>
+> ```
 >再次说明，如果你使用字符串模版，不用在意这些限制。
 
 ###字面量语法 vs 动态语法
 
 当使用字面量语法传递数值：
-
-    <!-- 传递了一个字符串"1" -->
-    <child some-prop="1"></child>
+```html
+<!-- 传递了一个字符串"1" -->
+<child some-prop="1"></child>
+```
 那么子组件中获取到的值是 `string` 类型。
 
 因为它是一个字面 `prop` ，它的值以字符串 `"1"` 而不是以实际的数字传下去。
 如果想传递一个实际的 JavaScript 数字，需要使用 `v-bind` ，从而让它的值被当作 `JavaScript` 表达式计算：
-
-    <!-- 传递实际的数字 -->
-    <child v-bind:some-prop="1"></child>
+```html
+<!-- 传递实际的数字 -->
+<child v-bind:some-prop="1"></child>
+```
 这样在子组件中获取到的值就是 `number` 类型。
 
 ###Prop是单向数据流
@@ -197,56 +200,59 @@ Vue.component('child', {
 更确切的说这两种情况是：
 
 定义一个局部 data 属性，并将 prop 的初始值作为局部数据的初始值。
-
-    props: ['initialCounter'],
-    data: function () {
-      return { counter: this.initialCounter }
-    }
+```javascript
+props: ['initialCounter'],
+data: function () {
+  return { counter: this.initialCounter }
+}
+```
 定义一个 computed 属性，此属性从 prop 的值计算得出。
-
-    props: ['size'],
-    computed: {
-      normalizedSize: function () {
-        return this.size.trim().toLowerCase()
-      }
-    }
+```javascript
+props: ['size'],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+```
 ###Prop 验证
 
 组件可以为 `props` 指定验证要求。如果未指定验证要求，`Vue` 会发出警告。当组件给其他人使用时这很有用。
 
 `prop` 是一个对象而不是字符串数组时，它包含验证要求：
-
-    Vue.component('example', {
-      props: {
-        // 基础类型检测 （`null` 意思是任何类型都可以）
-        propA: Number,
-        // 多种类型
-        propB: [String, Number],
-        // 必传且是字符串
-        propC: {
-          type: String,
-          required: true
-        },
-        // 数字，有默认值
-        propD: {
-          type: Number,
-          default: 100
-        },
-        // 数组／对象的默认值应当由一个工厂函数返回
-        propE: {
-          type: Object,
-          default: function () {
-            return { message: 'hello' }
-          }
-        },
-        // 自定义验证函数
-        propF: {
-          validator: function (value) {
-            return value > 10
-          }
-        }
+```javascript
+Vue.component('example', {
+  props: {
+    // 基础类型检测 （`null` 意思是任何类型都可以）
+    propA: Number,
+    // 多种类型
+    propB: [String, Number],
+    // 必传且是字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 数字，有默认值
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // 数组／对象的默认值应当由一个工厂函数返回
+    propE: {
+      type: Object,
+      default: function () {
+        return { message: 'hello' }
       }
-    })
+    },
+    // 自定义验证函数
+    propF: {
+      validator: function (value) {
+        return value > 10
+      }
+    }
+  }
+})
+```
 `type` 可以是下面原生构造器：
 
  - String
@@ -270,39 +276,40 @@ Vue.component('child', {
 父组件可以在使用子组件的地方直接用 `v-on` 来监听子组件触发的事件。
 
 下面是一个例子：
-
-    <div id="counter-event-example">
-      <p>{{ total }}</p>
-      <button-counter v-on:increment="incrementTotal"></button-counter>
-      <button-counter v-on:increment="incrementTotal"></button-counter>
-    </div>
-    
-    Vue.component('button-counter', {
-      template: '<button v-on:click="increment">{{ counter }}</button>',
-      data: function () {
-        return {
-          counter: 0
-        }
-      },
-      methods: {
-        increment: function () {
-          this.counter += 1
-          this.$emit('increment')
-        }
-      },
-    })
-    new Vue({
-      el: '#counter-event-example',
-      data: {
-        total: 0
-      },
-      methods: {
-        incrementTotal: function () {
-          this.total += 1
-        }
-      }
-    })
-
+```html
+<div id="counter-event-example">
+  <p>{{ total }}</p>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
+```
+```javascript
+Vue.component('button-counter', {
+  template: '<button v-on:click="increment">{{ counter }}</button>',
+  data: function () {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    increment: function () {
+      this.counter += 1
+      this.$emit('increment')
+    }
+  },
+})
+new Vue({
+  el: '#counter-event-example',
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function () {
+      this.total += 1
+    }
+  }
+})
+```
 效果参见：[https://cn.vuejs.org/v2/guide/components.html#自定义事件][url-emit]
 
 [url-emit]: https://cn.vuejs.org/v2/guide/components.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6
@@ -323,22 +330,24 @@ Vue.component('child', {
 ###给组件绑定原生事件
 
 有时候，你可能想在某个组件的根元素上监听一个原生事件。可以使用 `.native` 修饰 `v-on` 。例如：
-
-    <my-component v-on:click.native="doTheThing"></my-component>
+```html
+<my-component v-on:click.native="doTheThing"></my-component>
+```
 
 ###非父子组件通信
 
 有时候非父子关系的组件也需要通信。在简单的场景下，使用一个空的 `Vue` 实例作为中央事件总线：
+```javascript
+var bus = new Vue();
 
-    var bus = new Vue();
-    
-    // 触发组件 A 中的事件
-    bus.$emit('id-selected', 1)
-    
-    // 在组件 B 创建的钩子中监听事件
-    bus.$on('id-selected', function (id) {
-      // ...
-    })
+// 触发组件 A 中的事件
+bus.$emit('id-selected', 1)
+
+// 在组件 B 创建的钩子中监听事件
+bus.$on('id-selected', function (id) {
+  // ...
+})
+```
 在更多复杂的情况下，考虑使用专门的 **状态管理模式**，比如：vuex。
 
 未完待续。。。
