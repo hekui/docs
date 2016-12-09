@@ -296,6 +296,19 @@ JS:
 
 [url-emit]: https://cn.vuejs.org/v2/guide/components.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6
 
+> vm.$on( event, callback )
+
+>  - 参数：
+>   - {string} event
+>   - {Function} callback
+
+> vm.$emit( event, […args] )
+
+>  - 参数：
+>   - {string} event
+>   - [...args]
+
+
 ###给组件绑定原生事件
 
 有时候，你可能想在某个组件的根元素上监听一个原生事件。可以使用 `.native` 修饰 `v-on` 。例如：
