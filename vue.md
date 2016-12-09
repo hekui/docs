@@ -20,12 +20,13 @@ vue学习记录之组件，包括:
     })
 
 组件在注册之后，便可以在父实例的模块中以自定义元素 `<my-component></my-component>` 的形式使用。要确保在初始化根实例 **之前** 注册了组件。html：  
-
+```html
     <div id="example">
         <my-component></my-component>
     </div>
+```
 JS:
-
+```javascript
     // 注册
     Vue.component('my-component', {
       template: '<div>A custom component!</div>'
@@ -35,15 +36,17 @@ JS:
     new Vue({
       el: '#example'
     })
+```
 渲染为：
-
+```html
     <div id="example">
       <div>A custom component!</div>
     </div>
+```
 ###局部注册
 
 不必在全局注册每个组件。通过使用组件实例选项注册，可以使组件仅在另一个实例/组件的作用域中可用：
-
+```javascript
     var Child = {
       template: '<div>A custom component!</div>'
     }
@@ -55,6 +58,7 @@ JS:
         'my-component': Child
       }
     })
+```
 这种封装也适用于其它可注册的 Vue 功能，如指令。
 ###DOM 模版解析说明
 
