@@ -65,15 +65,17 @@ JS:
 当使用 DOM 作为模版时（例如，将 `el` 选项挂载到一个已存在的元素上）, 你会受到 HTML 的一些限制，因为 `Vue` 只有在浏览器解析和标准化 HTML 后才能获取模版内容。尤其像这些元素 `<ul>` ， `<ol>`， `<table>` ， `<select>` 限制了能被它包裹的元素， `<option>` 只能出现在其它元素内部。
 
 在自定义组件中使用这些受限制的元素时会导致一些问题，例如：
-
+```html
 	<table>
   	<my-row>...</my-row>
 	</table>
+```
 自定义组件 `<my-row>` 被认为是无效的内容，因此在渲染的时候会导致错误。变通的方案是使用特殊的 is 属性：
-
+```html
 	<table>
 	  <tr is="my-row"></tr>
 	</table>
+```
 应当注意，如果您使用来自以下来源之一的字符串模板，这些限制将不适用：
 
 - `<script type="text/x-template">`
@@ -85,23 +87,25 @@ JS:
 ###data 必须是函数
 
 使用组件时，大多数选项可以被传入到 `Vue` 构造器中，有一个例外： `data` 必须是函数。 
-
-    Vue.component('my-component', {
-      template: '<span>{{ message }}</span>',
-      data: function(){
-        return {
-            message: 'hello'
-          }
-      }
-    })
-如果这样：
-
-    Vue.component('my-component', {
-      template: '<span>{{ message }}</span>',
-      data: {
+```javascript
+Vue.component('my-component', {
+  template: '<span>{{ message }}</span>',
+  data: function(){
+    return {
         message: 'hello'
       }
-    })
+  }
+})
+```
+如果这样：
+```javascript
+Vue.component('my-component', {
+  template: '<span>{{ message }}</span>',
+  data: {
+    message: 'hello'
+  }
+})
+```
 `Vue` 会在控制台发出警告，告诉你在组件中 `data` 必须是一个函数。
 
 ##组件之间数据传递
@@ -116,17 +120,19 @@ JS:
 ###使用Props传递数据
 
 `prop` 是父组件用来传递数据的一个自定义属性。子组件需要显式地用 `props` 选项 声明 `“prop”`：
-
-    Vue.component('child', {
-      // 声明 props
-      props: ['message'],
-      // 就像 data 一样，prop 可以用在模板内
-      // 同样也可以在 vm 实例中像 “this.message” 这样使用
-      template: '<span>{{ message }}</span>'
-    })
+```javascript
+Vue.component('child', {
+  // 声明 props
+  props: ['message'],
+  // 就像 data 一样，prop 可以用在模板内
+  // 同样也可以在 vm 实例中像 “this.message” 这样使用
+  template: '<span>{{ message }}</span>'
+})
+```
 然后在调用组件的地方，向它传入一个普通字符串：
-
-    <child message="hello!"></child>
+```html
+<child message="hello!"></child>
+```
 结果：
 
     hello!
@@ -134,12 +140,13 @@ JS:
 **动态 Props**
 
 也可以用 `v-bind` 动态绑定 `props` 的值。每当父组件的数据变化时，该变化也会传导给子组件：
-
-    <div>
-      <input v-model="parentMsg">
-      <br>
-      <child v-bind:my-message="parentMsg"></child>
-    </div>
+```html
+<div>
+  <input v-model="parentMsg">
+  <br>
+  <child v-bind:my-message="parentMsg"></child>
+</div>
+```
 使用 `v-bind` 的缩写语法通常更简单：
 
     <child :my-message="parentMsg"></child>
