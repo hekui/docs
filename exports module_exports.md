@@ -4,12 +4,12 @@
 学习参考及代码：
  - [Node.js Module – exports vs module.exports](http://www.hacksparrow.com/node-js-exports-vs-module-exports.html)
 
- **要点：**
+**要点：**
  - exports指向module.exports，exports是对module.exports的引用。
  - require方法返回的是module.exports。
  - 默认module.exports 是一个空对象 {}。 如果你只是添加方法或属性，只要操作exports就可以了。只有需要覆盖它的时候才需要module.exports。
 
-	 
+
 例子1：
 ```javascript
 //rocker.js
