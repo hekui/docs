@@ -1,0 +1,21 @@
+#exports vs module.exports的区别
+
+***要点：***
+> 1、exports指向module.exports，exports是对module.exports的引用。
+> 2、require方法返回的是module.exports。
+> 3、默认module.exports 是一个空对象 {}。 如果你只是添加方法或属性，只要操作exports就可以了。只有需要覆盖它的时候才需要module.exports。
+
+
+看个例子：
+```javascript
+exports.a = function(){
+  console.log('a')
+}
+module.exports = {a: 2}
+exports.a = 1 
+```
+```javascript
+ var x = require('./foo');
+ console.log(x.a) //2
+ ```
+ 得到的x对象是`module.exports`出来的`{a: 2}`对象
