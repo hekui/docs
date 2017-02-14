@@ -27,7 +27,7 @@ rocker.name(); // 'My name is Lemmy Kilmister'
 console.log(rocker); //{ name: [Function], a: 'a', b: 'c' }
  ```
  每一个`node.js`执行文件，都自动创建一个`module`对象，同时，`module`对象会创建一个叫`exports`的属性。  
-默认`module.exports`是一个空对象`{}`。 如果你只是添加方法或属性，只要操作`exports`就可以了。
+默认`module.exports`是一个空对象`{}`。 如果你只是添加方法或属性，只要操作`exports`就可以了。只有需要覆盖它的时候才需要module.exports，看下面例2。
 
 例子2：
 ```javascript
