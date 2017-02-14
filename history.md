@@ -18,19 +18,14 @@ history对象提供了一系列方法，允许在浏览历史之间移动，包�
 
 使用go()方法可以在用户的历史记录中任意跳转。这个方法接收一个参数，表示向后或向前跳转的页面数的一个整数值。负数表示向后跳转(类似于后退按钮)，正数表示向前跳转(类似于前进按钮)。
 ```javascript
-//后退一页
-history.go(-1)
-//前进一页
-history.go(1);
-//前进两页
-history.go(2);
+history.go(-1);//后退一页
+history.go(1);//前进一页
+history.go(2);//前进两页
 ```
 go()方法无参数时，相当于history.go(0)，可以刷新当前页面
 ```javascript
-//刷新当前页面
-history.go();
-//刷新当前页面
-history.go(0);
+history.go();//刷新当前页面
+history.go(0);//刷新当前页面
 ```
 **back()**
 
@@ -40,10 +35,8 @@ back()方法用于模仿浏览器的后退按钮，相当于history.go(-1)。
 
 forward()方法用于模仿浏览器的前进按钮，相当于history.go(1)。
 ```javascript
-//后退一页
-history.back()
-//前进一页
-history.forward()
+history.back();//后退一页
+history.forward();//前进一页
 ```
 如果移动的位置超出了访问历史的边界，以上三个方法并不报错，而是静默失败。  
 [注意]使用历史记录时，页面通常从浏览器缓存之中加载，而不是重新要求服务器发送新的网页增改记录。  
@@ -61,11 +54,12 @@ history.pushState(state, title, url);
  - URL —— 这个参数提供了新历史纪录的地址。新URL必须和当前URL在同一个域，否则，pushState()将丢出异常。这个参数可选，如果它没有被特别标注，会被设置为文档的当前URL。
 
 假定当前网址是example.com/1.html，使用pushState方法在浏览记录(history对象)中添加一个新记录
-
-	var stateObj = { foo: 'bar' };
-	history.pushState(stateObj, 'page 2', '2.html');
+```javascript
+var stateObj = { foo: 'bar' };
+history.pushState(stateObj, 'page 2', '2.html');
+```
 添加上面这个新记录后，浏览器地址栏立刻显示example.com/2.html，但并不会跳转到2.html，甚至也不会检查2.html是否存在，它只是成为浏览历史中的最新记录。假如这时访问了google.com，然后点击了倒退按钮，页面的url将显示2.html，但是内容还是原来的1.html。再点击一次倒退按钮，url将显示1.html，内容不变。  
-总之，pushState方法不会触发页面刷新，只是导致history对象发生变化，地址栏的显示地址发生变化。  
+总之，**pushState方法不会触发页面刷新**，只是导致history对象发生变化，地址栏的显示地址发生变化。  
 如果pushState的url参数，设置了一个新的锚点值(即hash)，并不会触发hashchange事件，，即使新的URL和旧的只在hash上有区别。  
 如果设置了一个跨域网址，则会报错。这样设计的目的是，防止恶意代码让用户以为他们是在另一个网站上。
 ```javascript
@@ -88,7 +82,7 @@ history.go(2); // url显示为http://example.com/example.html?page=3
 history.state属性返回当前页面的state对象。
 ```javascript
 history.pushState({page: 1}, 'title 1', '?page=1');
-history.state// { page: 1 }
+history.state; //{ page: 1 }
 ```
 **popstate事件**
 
