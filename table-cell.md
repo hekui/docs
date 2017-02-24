@@ -28,6 +28,7 @@ demo见：[http://runjs.cn/code/wh6smlmu](http://runjs.cn/code/wh6smlmu)
 ## 3. 等高布局
 可以实现以下等高布局。
 ![](images/table-cell-column.png )
+
 demo见：[http://runjs.cn/code/pc0dt5d1](http://runjs.cn/code/pc0dt5d1)
 
  > CSS2.1表格模型中的元素，可能不会全部包含在除HTML之外的文档语言中。这时，那些“丢失”的元素会被模拟出来，从而使得表格模型能够正常工作。所有的表格元素将会自动在自身周围生成所需的匿名table对象，使其符合table/inline-table、table-row、table- cell的三层嵌套关系。
@@ -40,3 +41,5 @@ demo见：[display:table-cell实现的列表布局](http://www.zhangxinxu.com/st
 display:table-cell下的列表布局最适用的场景是：列表个数不固定，但是，无论列表几个，都平分容器空间。什么意思呢？就是如果4个列表，希望每个宽度25%，3个就33.3333%，2个列表希望每个宽度50%。此时，没有比display:table-cell更合适的技术了。
 
 父级设置display:table同时宽度为容器宽度，或者直接width:100%，此时，display:table-cell子元素就会自动等分。
+
+demo见：[http://runjs.cn/code/llgzl3tl](http://runjs.cn/code/llgzl3tl)
