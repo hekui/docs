@@ -3,11 +3,11 @@
 `display:table-cell` 属性指让标签元素以表格单元格的形式呈现，类似于 `td` 标签。
 与其他一些`display`属性类似，`table-cell`同样会被其他一些CSS属性破坏，例如`float`, `position:absolute`，所以，在使用`display:table-cell`与`float:left`或是`position:absolute`属性尽量不用同用。设置了`display:table-cell`的元素对宽度高度敏感，对`margin`值无反应，响应`padding`属性，基本上就是活脱脱的一个`td`标签元素了。
 
-`display:table-cell`的应用：
-1. 垂直居中
-2. 两栏自适应布局
-3. 等高布局
-4. 列表布局
+`display:table-cell`的应用：  
+1. 垂直居中  
+2. 两栏自适应布局  
+3. 等高布局  
+4. 列表布局  
 
 
 ## 1. 垂直居中
