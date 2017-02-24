@@ -32,9 +32,6 @@ console.log(rocker); //{ name: [Function], a: 'a', b: 'c' }
 例子2：
 ```javascript
 //rocker.js
-exports.name = function(){
-  console.log('default name');
-}
 module.exports = {name: 'hekui'};
 exports.name = 'edited name';
 ```
@@ -49,7 +46,14 @@ exports.name = 'edited name';
 例子3：
 ```javascript
 //rocker.js
-module.exports = 'ROCK IT!';
+module.exports = {
+	name: function(){
+		console.log('My name is hekui');
+	}
+}
+module.exports = {
+	name: 'ROCK IT!'
+};
 exports.name = function() {
     console.log('My name is Lemmy Kilmister');
 };
@@ -57,8 +61,10 @@ exports.name = function() {
 ```javascript
 //app.js
 var rocker = require('./rocker.js');
-rocker.name(); // TypeError: Object ROCK IT! has no method 'name'
+rocker.name(); // TypeError: rocker.name is not a function
  ```
+如果有多个module.exports，返回最后一个。
+
 
  例子4：
  ```javascript
