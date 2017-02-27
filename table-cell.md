@@ -50,9 +50,11 @@ html:
 .container img{ width:100px; height:100px;}
 .container span{ color:#999; }
 .content{
-	display:table-cell; line-height:1.6;
+	display:table-cell; line-height:1.6; width:5000px;
 }
 ```
+如果不设置宽度，那么右侧内容太少时，宽度就等于实际宽度。设置宽度为 `5000px`，实际宽度只会撑满右侧宽度。
+
 demo见：[http://runjs.cn/code/wh6smlmu](http://runjs.cn/code/wh6smlmu)
 
 ## 3. 等高布局
@@ -110,7 +112,7 @@ demo见：[http://runjs.cn/code/pc0dt5d1](http://runjs.cn/code/pc0dt5d1)
 
  > CSS2.1表格模型中的元素，可能不会全部包含在除HTML之外的文档语言中。这时，那些“丢失”的元素会被模拟出来，从而使得表格模型能够正常工作。所有的表格元素将会自动在自身周围生成所需的匿名table对象，使其符合table/inline-table、table-row、table- cell的三层嵌套关系。
 
-比如：如果我们为元素使用 `display:table-cell;` 属性，而不将其父容器设置为 `display:table-row;` 属性，浏览器会默认创建出一个表格行，就好像文档中真的存在一个被声明的表格行一样，但是建议还是**明确设置 `display:table;` 属性更好**。
+比如：如果我们为元素使用 `display:table-cell;` 属性，而不将其父容器设置为 `display:table-row;` 属性，浏览器会默认创建出一个表格行，就好像文档中真的存在一个被声明的表格行一样。
 
 ## 4. 列表布局
 一般列表布局都是采用浮动的方法实现，多个元素左浮动，自动平铺及换行。  
