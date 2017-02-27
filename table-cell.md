@@ -19,7 +19,7 @@
 ![](images/table-cell-responsive.png )
 
 左侧为头像，右侧内容自适应。这个效果很常见。可以用以下方法实现：
-1. 父容器padding-left + 左侧内容position:absolute。
+1. 父容器padding-left + 左侧内容position:absolute，适用于html中先渲染右侧主要内容，后渲染左侧头像。
 2. 左侧内容左浮动 + 右侧内容margin-left。
 
 还可以用`table-cell`实现。
