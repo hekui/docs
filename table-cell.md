@@ -50,7 +50,7 @@ html:
 .container img{ width:100px; height:100px;}
 .container span{ color:#999; }
 .content{
-	display:table-row; line-height:1.6;
+	display:table-cell; line-height:1.6;
 }
 ```
 demo见：[http://runjs.cn/code/wh6smlmu](http://runjs.cn/code/wh6smlmu)
