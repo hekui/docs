@@ -19,8 +19,8 @@
 ![](images/table-cell-responsive.png )
 
 左侧为头像，右侧内容自适应。这个效果很常见。可以用以下方法实现：
-1. padding-left + position:absolute。
-2. 左浮动 + margin-left。
+1. 父容器padding-left + 左侧内容position:absolute。
+2. 左侧内容左浮动 + 右侧内容margin-left。
 
 还可以用`table-cell`实现。
 
