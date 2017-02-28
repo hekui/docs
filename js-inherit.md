@@ -69,10 +69,11 @@ Animal.prototype.sayKinds = function(){
 
 ### 1. 原型继承
 
-相信看了前面已经大致了解原型继承了，下面我们来看如何让子构造函数继承父构造函数的成员。
+相信看了前面已经大致了解原型继承了，下面我们来看如何让子构造函数（“子类”）继承父构造函数（“父类”）的成员。
 ```javascript
 function Animal(kinds){
 	this.kinds = kinds;
+	this.food = [];
 };
 Animal.prototype.sayKinds = function(){
 	console.log(this.kinds);
@@ -85,6 +86,10 @@ var Cat = function(name, color){
 Cat.prototype = new Animal('猫科');
 
 var cat = new Cat('小黄', '黄色');
+var cat2 = new Cat('小黑', '黑色');
+//针对父类实例引用类型成员的更改，会影响其他子类实例
+cat.food.push('猫粮');
+console.log(cat2.food); //["猫粮"]
 ```
 
  特点：  
@@ -92,8 +97,8 @@ var cat = new Cat('小黄', '黄色');
 2. 父类新增原型方法/属性，子类都能访问到。  
 3. 简单，一句话实现。  
 
-缺点：
-1. 来自原型对象的**引用属性**是所有实例共享的。  
+缺点：  
+1. 来自原型对象的**引用类型属性**是所有实例共享的。  
 2. 创建子类实例时，无法向父类构造函数传参。  
 3. 无法实现多继承。  
 
