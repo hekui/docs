@@ -2,7 +2,42 @@
 
 ES6中新增了 `class` 和 `extends`，来实现类和继承。
 
-[查看ES5的继承](js-inherit.md)
+
+在阅读以下内容前，请确保你已经理解 `class`。
+ - [ES6 Class 详解](es6-class.md)
+
+## 继承
+
+通过关键字 `extends` 来继承一个类，并且，可以通过 `super` 关键字来引用父类。
+
+如果子类中有`constructor`构造函数，则必须在 `constructor`方法中调用 `super`方法,否则新建实例时会报错(this is not defined)。  
+这是因为子类没有自己的 `this` 对象，而是继承父类的 `this` 对象，然后对其进行加工。如果不调用`super`方法，子类就得不到 `this` 对象。
+
+```javascript
+class Animal {
+	constructor(kinds){
+		this.kinds = kinds;
+	}
+	sayKinds(){
+		console.log(this.kinds);
+	}
+}
+class Cat extends Animal {
+	constructor(kinds, name, color){
+		super(kinds);
+		this.name = name;
+		this.color = color;
+	}
+}
+
+var cat = new Cat('猫科', '小黄', '黄色');
+```
+
+![](images/inherit-class.png)
+
+下面来看看ES5和ES6的继承区别：
+
+[查看ES5的继承详解](js-inherit.md)  
 
 ## ES5
 
@@ -29,6 +64,7 @@ ES5中这种最简单的继承，实质上就是将子类的原型设置为父�
 ## ES6  
 
 ES6中的继承：
+
 ![](images/inherit-es6.png )
 
 ```javascript
@@ -47,30 +83,3 @@ Sub.prototype.__proto__ === Super.prototype; // ⑦ true
 
 ## 所以
 ES6和ES5的继承是一模一样的，只是多了 `class` 和 `extends` ，ES6的子类和父类，子类原型和父类原型，通过 `__proto__` 连接。
-
-## 实例
-
-如果子类中有`constructor`构造函数，则必须在 `constructor`方法中调用 `super`方法,否则新建实例时会报错(this is not defined)。  
-这是因为子类没有自己的 `this` 对象，而是继承父类的 `this` 对象，然后对其进行加工。如果不调用`super`方法，子类就得不到 `this` 对象。
-
-```javascript
-class Animal {
-	constructor(kinds){
-		this.kinds = kinds;
-	}
-	sayKinds(){
-		console.log(this.kinds);
-	}
-}
-class Cat extends Animal {
-	constructor(kinds, name, color){
-		super(kinds);
-		this.name = name;
-		this.color = color;
-	}
-}
-
-var cat = new Cat('猫科', '小黄', '黄色');
-```
-
-![](images/inherit-class.png)
