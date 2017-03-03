@@ -30,16 +30,17 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 
 
 ### 版本回退（已经commit）
-- git log [--pretty=oneline] 查看提交历史记录（其他参数：--graph 查看分支合并图 --abbrev-commit 更加简短的commit_id）
+- git log [params] 查看提交历史记录（params参数：`--pretty=oneline`一行美化显示 --graph；查看分支合并图；`--abbrev-commit`更加简短的commit_id）  
+    git log --graph --pretty=oneline --abbrev-commit
 - git reflog 查看命令历史
 - git reset HEAD^ --hard  回退到上一个版本  
    git reset HEAD^^ --hard  回退到上上一个版本  
    git reset HEAD~100 --hard 回退到上100个版本  
-   git reset &lt;commit_id&gt; --hard  回退到某次commit_id的版本（通过git reflog查看commit_id）  
+   git reset &lt;commit_id&gt; --hard  回退到某次commit_id的版本（通过`git reflog`查看commit_id）  
 
 ### 撤销修改（未commit）
-- git checkout -- &lt;file&gt; 丢弃工作区的修改（在工作区做了修改，但还未git add时）
-- git reset HEAD &lt;file&gt; 把暂存区的修改撤销掉，重新放回工作区(已经git add，但未git commit)
+- git checkout -- &lt;file&gt; 丢弃工作区的修改（在工作区做了修改，但还未`git add`时）
+- git reset HEAD &lt;file&gt; 把暂存区的修改撤销掉，重新放回工作区(已经`git add`，但未`git commit`)
 如果已经git commit，请查看前面的版本回退。
 
 ### 分支管理
@@ -49,17 +50,17 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 - git checkout -b dev 创建分支并切换分支
 
 - git branch 列出本地所有分支，当前分支前面会标一个*号。加一个参数`-a`可查看远程分支(git branch -a)。
-- git push origin dev 将分支推送到远程分支  
-- git branch -d dev  删除dev分支  
+- git push origin dev 将分支推送到远程分支
+- git branch -d dev  删除dev分支
 
  **合并分支：**  
- 将dev分支合并到master分支，先切换到master分支，再merge dev分支到master。
-```javascript
-$ git checkout master
-$ git merge dev
-```
-通常，合并分支时，如果可能，Git会用`Fast forward`模式，但这种模式下，删除分支后，会丢掉分支信息。  
-如果我们强制禁用`Fast forward`模式，Git就会在merge时生成一个新的`commit`，这样，从分支历史上就可以看出分支信息。
+ 若想将dev分支合并到master分支：1.先切换到master分支，2.再`merge dev`分支到master。
+ ```javascript
+ $ git checkout master
+ $ git merge dev
+ ```
+ 通常，合并分支时，如果可能，Git会用`Fast forward`模式，但这种模式下，删除分支后，会丢掉分支信息。  
+ 如果我们强制禁用`Fast forward`模式，Git就会在merge时生成一个新的`commit`，这样，从分支历史上就可以看出分支信息。
 - git merge --no-ff -m "merge with no-ff" dev  //合并分支，--no-ff参数，表示禁用Fast forward；-m参数，创建一个新的commit。
 - git log --graph --pretty=oneline --abbrev-commit 查看到的log会有分支信息。
 
