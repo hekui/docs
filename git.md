@@ -30,7 +30,7 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 
 
 ### 版本回退（已经commit）
-- git log [params] 查看提交历史记录（params参数：`--pretty=oneline`一行美化显示 --graph；查看分支合并图；`--abbrev-commit`更加简短的commit_id）  
+- git log [params] 查看提交历史记录（params参数：`--pretty=oneline`一行美化显示 ；`--graph`查看分支合并图；`--abbrev-commit`更加简短的commit_id）  
     git log --graph --pretty=oneline --abbrev-commit
 - git reflog 查看命令历史
 - git reset HEAD^ --hard  回退到上一个版本  
@@ -46,12 +46,21 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 ### 分支管理
 - git branch dev 创建分支
 - git checkout dev 切换分支  
-以上2个命令可以用以下一个命令代替：
-- git checkout -b dev 创建分支并切换分支
+    以上2个命令可以用以下一个命令代替：  
+- git checkout -b dev 创建分支并切换分支  
 
-- git branch 列出本地所有分支，当前分支前面会标一个*号。加一个参数`-a`可查看远程分支(git branch -a)。
-- git push origin dev 将分支推送到远程分支
-- git branch -d dev  删除dev分支
+- git branch 列出本地所有分支，当前分支前面会标一个*号。加一个参数`-a`可查看远程分支(`git branch -a`)。  
+- git push origin dev 将分支推送到远程分支  
+- git branch -d dev  删除dev分支  
+    如果我们创建了一个分支做了修改，然后并没有合并到其他分支，这时用以上代码：  
+```javascript
+$ git branch -d test
+error: The branch 'test' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D test'.
+```
+    git会提醒我们，该分支还没有被合并，删除后会丢失修改，如果要强行删除需要使用  
+- git branch -D test  强制删除test分支
+    当然，一般这个命令很少用。
 
  **合并分支：**  
  若想将dev分支合并到master分支：1.先切换到master分支，2.再`merge dev`分支到master。
@@ -68,7 +77,7 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 当我们在dev分支中开发时，需要立即修复一个紧急bug(假定bugID是123)，这时一般是新建一个分支`issue-123`，但是当前在dev上的开发还未完成，不能提交代码。这时该怎么办？  
 还好，git提供了一个`stash`功能，可以将当前的工作现场“储藏”起来，以待日后恢复。
 - git stash 将现场储藏起来
-这个时候用git status查看工作区，就是干净的，可以切换分支等操作。  
+这个时候用`git status`查看工作区，就是干净的，可以切换分支等操作。  
 那么我们可能会经历以下一系列的操作：
 ```javascript
 $ git checkout master
@@ -92,7 +101,7 @@ stash@{0}: WIP on dev: 6224937 add merge
 工作现场还在，现在有2个方法可以恢复：
 - git stash apply 恢复后，stash内容不会被删除，需要用
 - git stash drop 来删除
-- git stash pop 恢复后，stash内容不会被删除
+- git stash pop 恢复后，stash内容会被删除
 ```javascript
 $ git stash apply stash@{0} //恢复指定的stash
 ```
