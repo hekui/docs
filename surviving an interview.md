@@ -69,7 +69,10 @@ ES6、polyfill、babel、npm、nodejs、
 ### JS篇
  - 闭包
  - 作用域链
- - this
+ - this  
+ 在ES6之前，this永远指向函数运行时所在的对象，而不是函数被创建时所在的对象。在ES6之后，出现了一个箭头函数(=>)，在箭头函数中的this是词法作用域，由上下文确定。也就是指向外层调用者。  
+ 因此，用call()或者apply()调用箭头函数时，无法对this进行绑定，即传入的第一个参数被忽略：
+
  - 模块化开发  
   - [exports与module.exports的区别](./exports module_exports.md)
  - 同源策略
@@ -101,7 +104,7 @@ ES6、polyfill、babel、npm、nodejs、
 babel转化、箭头函数、Generator函数
 
 ### 前端工程化/工具篇
-nodejs、gulp、less、
+nodejs、webpack、gulp、less、express
 
 ### 前端库/框架
 vue.js、react.js、angular.js

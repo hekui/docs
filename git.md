@@ -20,7 +20,8 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 ### 常见命令
 
 - git init 初始化一个git仓库
-- git add &lt;file&gt; 添加文件到仓库（实际是到暂存区）
+- git add &lt;file&gt; 添加文件到仓库（实际是到暂存区）  
+    git add -f App.class  强制添加到仓库（用于文件被.gitignore忽略时）
 - git commit -m "" 提交文件到仓库（将暂存区中的所有内容提交）  
     注意，如果修改文件后想快速提交，可用 `git commit -am ""`，参数`-a`表示`add`。
 - git status 查看仓库当前状态
@@ -162,6 +163,37 @@ origin git@github.com:hekui/ledou.git (push)
 $ git tag -d v0.8
 $ git push origin :refs/tags/v0.8
 ```
+
+### 忽略文件
+#### .gitignore  
+一般情况下，使用`.gitignore`配置即可。  
+**配置语法：**
+- 以斜杠 `/` 开头表示目录;
+- 以星号 `*` 通配多个字符;
+- 以问号 `?` 通配单个字符;
+- 以方括号 `[]` 包含单个字符的匹配列表;
+- 以叹号 `!` 表示不忽略匹配到的文件或目录;
+
+**示例：**  
+```javascript
+/node_modules/ //忽略根目录下的node_modules目录
+node_modules/ //忽略所有的node_modules目录
+*.less //忽略所有.less文件
+```
+
+#### 忽略已经加入git库的文件  
+但是，我们经常有这样一种情况。  
+有个文件，我们必须入库，大家一起共享，但是呢。每个人本地的配置又是因自己本地的环境而异。这样的话，这个文件就很崩溃了。你要入库，通过`.gitignore`和`excludes`都不起作用。每次`git status`都会提示你有修改，这时我们需要用到：
+```javascript
+//执行命令将<file>加入不提交队列
+git update-index --assume-unchanged <file>
+```
+如果某天，我们需要将该文件提交，那需要：  
+```javascript
+//执行命令将<file>取消加入不提交队列
+git update-index --no-assume-unchanged <file>
+```
+注意：如果代码是revert回来的（比如你误提交了代码，然后你先回退后再提交后，然后你本地再revert回之前的修改代码），那么你的代码默认是执行了`git add`的，需要先`git reset HEAD <file>`撤销add，然后再执行以上的`git update-index --assume-unchanged <file>`代码。
 
 ## 附录：
 ### SSH Key创建方法
