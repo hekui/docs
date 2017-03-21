@@ -25,7 +25,7 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 ### 常见命令
 
 - git init 初始化一个git仓库
-- git add &lt;file&gt; 添加文件到仓库（实际是到暂存区）  
+- git add &lt;file&gt; 添加文件到仓库（实际是到暂存区，[关于git的工作区和暂存区的详细介绍](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000)）  
     git add -f App.class  强制添加到仓库（用于文件被.gitignore忽略时）
 - git commit -m "" 提交文件到仓库（将暂存区中的所有内容提交）  
     注意，如果修改文件后想快速提交，可用 `git commit -am ""`，参数`-a`表示`add`。
@@ -33,6 +33,8 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 - git diff &lt;file&gt; 查看file的修改内容
 - git clone &lt;path&gt; 克隆远端库到本地（切换分支也是这个命令）
 - git push origin &lt;branch&gt; 推送分支到远程库
+
+
 
 
 ### 版本回退（已经commit）
