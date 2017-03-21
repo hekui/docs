@@ -68,6 +68,7 @@ xhr.onreadystatechange = function(){
 		console.log("error");
 	}
 }
+xhr.send(null);
 ```
 open(method, url, async);  规定请求的类型、URL 以及是否异步处理请求。
  - method：请求的类型；GET 或 POST
