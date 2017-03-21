@@ -3,7 +3,7 @@
  - [ES5中的继承](js-inherit.md)
  - [ES6中的继承](js-inherit-es6.md)
 
-## 基本用法1
+## 基本用法
 ```javascript
 class People {
     constructor(name){
