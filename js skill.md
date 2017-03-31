@@ -1,4 +1,4 @@
-#js技巧库
+# JS技巧库
 
 ## JS的数据类型：
 number,string,boolean,undefined,null,object,symbol；  
@@ -42,16 +42,20 @@ typeof arr; //object
 typeof obj; //object
 typeof null; //object
 typeof new Date(); //object
+
 //再看看下面的结果
-var n = new Number();
-typeof n; //object
-var s = new String();
-typeof s; //object
-var b = new Boolean();
-typeof b; //object
 var f = new Function();
 typeof f; //function
 //除了new Function外，其他new出来的都是Object类型。
+
+var n = new Number();
+typeof n; //object
+
+var s = new String();
+typeof s; //object
+
+var b = new Boolean();
+typeof b; //object
 ```
 
 我们一般都是使用`Object.prototype.toString`方法来区分：
@@ -82,7 +86,7 @@ var arr =[1, 2, 3];
 var newArr = arr.slice();
 ```
 `slice([index][, length])`方法，提取原数组的一部分，原数组不变，返回一个新数组。
-更多：[Array对象详解](js array.md)
+更多：[Array对象详解](./js array.md)
 
 ## 对DOM列表排序:
 
@@ -96,19 +100,19 @@ var newArr = arr.slice();
     <li class="lang">Haskell</li>
 </ol>
 ```
-参考代码：
+参考代码： 
 ```javascript
 var el = document.getElmentById('test-list');
 Array.from(el.children).sort(function(p, n){
-	return p.innerText - n.innerText;
+	return p.innerText > n.innerText;
 }).forEach(function(item){
 	el.appendChild(item);
 })
 ```
-技术点：
+知识点：
 1. Array.from(); 将类似数组的对象转换为数组。
 2. sort排序；当添加排序函数时，如果返回值大于0，则前一个元素往后排。
-3. forEach；遍历数组，并对元素做操作，无返回值，与map的区别是，map对元素做了操作后，会返回一个新的数组。
+3. forEach；遍历数组，并对元素做操作，无返回值，与map(映射)的区别是，map对元素做了操作后，会返回一个新的数组。
 4. appendChild方法；向父元素中插入节点，如果要插入的节点已经存在于文档中，则相当于是移动该节点（即会先删除原节点，然后在新位置插入节点）。
 
 ## 闭包的问题：  
@@ -127,7 +131,15 @@ Greeters[2]() // 10
 期望它输出0，1，2 ...？  
 修改方法：  
 1. 修改`var`为`let`。
-2. 如下：
+```javascript
+const Greeters = []
+for (let i = 0 ; i < 10 ; i++) {
+	Greeters.push(function () {
+		return console.log(i)
+	})
+}
+```
+2. 利用 `bind()` 方法([关于Function.prototype.bind()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind))，如下：
 ```javascript
 Greeters.push(function (i) {
 	return console.log(i)

@@ -41,7 +41,7 @@ var arr = [1, 2, 3];
 
 typeof arr // "object"
 Array.isArray(arr) // true
-但是我们更多是使用如下方法来：
+//但是我们更多是使用如下方法来：
 Object.prototype.toString.call(arr) === '[object Array]'; //true
 ```
 ## 3.Array实例方法

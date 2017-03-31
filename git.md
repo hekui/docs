@@ -129,6 +129,7 @@ git push -u origin master
 ```
 使用如下命令：  
 - git remote add origin &lt;path&gt; 创建关联，path就是远端路径。
+- git checkout -b master origin/master 创建master分支与远端master分支关联，并从远端捡出代码。
 - git push -u origin master 把本地库的所有内容推送到远程库上，-u参数是将对应的分支关联，简化以后的推送。
 
 - git remote 查看远程库的信息，加参数`-v`，显示更详细的信息。
