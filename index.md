@@ -17,6 +17,26 @@ CSS后处理器框架：
 - [postcss(英文官网)](http://postcss.org/)  
 有一个非常好用的插件：[autoprefixer](https://github.com/postcss/autoprefixer)，用来向css添加浏览器前缀（`-webkit-`,`-moz-`,`-o-`,`-ms-`等），使用的是[Can I Use](http://caniuse.com/)的数据来决定哪些前缀是需要的。
 
+## 字体
+网页中图标系统：  
+
+SVG:  
+使用svg替代icon font的[理由](http://www.jianshu.com/p/fb3ce4b9c765)。  
+
+- [svg-icon](https://leungwensen.github.io/svg-icon)，将icon转为svg，支持很多流行的iconfont，可以在线选择`SVG sprite`文件下载。
+
+Icon Font:  
+自己制作iconfont的方法见：[图标绘制](http://www.iconfont.cn/plus/help/detail?helptype=draw)。  
+
+- [font awesome 官网](http://fontawesome.io/)，完美的图标字体，[中文介绍](http://www.bootcss.com/p/font-awesome/)。
+- [Iconfont-阿里巴巴矢量图标库](http://www.iconfont.cn/)，国内功能很强大且图标内容很丰富的矢量图标库。
+- [Icon Moon](https://icomoon.io/)，像素级图标完美解决方案。
+
+中文字体处理:  
+
+- [font-spirder 字蛛](http://font-spider.org/)，只引入网页中使用到的文字。(可惜的是目前还没有`webpack`插件)  
+- [font min](http://ecomfe.github.io/fontmin/)，第一个纯 JavaScript 字体子集化方案。
+
 ## JS教程
 - 廖雪峰：[JavaScript教程](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000)（推荐这个，可在线写代码练习及答案验证。）
 - 阮一峰：[JavaScript 标准参考教程（alpha）](http://javascript.ruanyifeng.com/)
@@ -26,9 +46,9 @@ CSS后处理器框架：
 - 阮一峰：[ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 
 ## 数据交互
- - [axios](https://github.com/mzabriskie/axios)
- - [superagent](https://github.com/visionmedia/superagent)
- - [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) node跨域代理插件
+ - [axios](https://github.com/mzabriskie/axios)，支持并发请求。
+ - [superagent](https://github.com/visionmedia/superagent)，同时支持node平台和浏览器端。
+ - [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)，node跨域代理插件
 
 ## Vue.js 生态
 - [vue官网](https://vuejs.org/)
@@ -62,7 +82,7 @@ Mock.js 生成随机数据，拦截 Ajax 请求。让前端能独立于后端运
 
 ## Node教程
 - [Node.js 中文网文档](http://nodejs.cn/api/)(英文不好的同学的福音)
-- 阮一峰：[Node.js](http://javascript.ruanyifeng.com/nodejs/basic.html)(不过这个也是中文的)
+- 阮一峰：[Node.js](http://javascript.ruanyifeng.com/nodejs/basic.html)(这个也是中文的)
 
 
 ## Python教程
