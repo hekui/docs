@@ -55,7 +55,7 @@ html:
 ```
 如果不设置宽度，那么右侧内容太少时，宽度就等于实际宽度。设置宽度为 `5000px`，实际宽度只会撑满右侧宽度。
 
-demo见：[http://runjs.cn/code/wh6smlmu](http://runjs.cn/code/wh6smlmu)
+demo见：[http://runjs.cn/detail/wh6smlmu](http://runjs.cn/detail/wh6smlmu)
 
 ## 3. 等高布局
 可以实现以下等高布局。
@@ -108,7 +108,7 @@ html:
 	background-color:#e6e6e6;
 }
 ```
-demo见：[http://runjs.cn/code/pc0dt5d1](http://runjs.cn/code/pc0dt5d1)
+demo见：[http://runjs.cn/detail/pc0dt5d1](http://runjs.cn/detail/pc0dt5d1)
 
  > CSS2.1表格模型中的元素，可能不会全部包含在除HTML之外的文档语言中。这时，那些“丢失”的元素会被模拟出来，从而使得表格模型能够正常工作。所有的表格元素将会自动在自身周围生成所需的匿名table对象，使其符合table/inline-table、table-row、table- cell的三层嵌套关系。
 
@@ -194,4 +194,4 @@ html:
 	padding: 10px;
 }
 ```
-demo见：[http://runjs.cn/code/llgzl3tl](http://runjs.cn/code/llgzl3tl)
+demo见：[http://runjs.cn/detail/llgzl3tl](http://runjs.cn/detail/llgzl3tl)
