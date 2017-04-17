@@ -6,9 +6,6 @@
 3. 定位 + translate  
 4. line-height（多行文本在某一高度的容器中，垂直居中）  
 
-要实现效果如下：  
-
-![](images/vertical-middle.png )  
 
 ## 1. display: table-cell
 `display: table-cell` 属性是让元素以表格单元格的形式呈现，类似于 `td` 标签。  
@@ -20,7 +17,7 @@
 
  > 详见：[我所知道的几种display:table-cell的应用](http://www.zhangxinxu.com/wordpress/2010/10/%E6%88%91%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%A7%8Ddisplaytable-cell%E7%9A%84%E5%BA%94%E7%94%A8/)
 
-demo见：[http://runjs.cn/code/5brnqzop](http://runjs.cn/code/5brnqzop)
+demo见：[http://runjs.cn/detail/5brnqzop](http://runjs.cn/detail/5brnqzop)
 
 html:
 ```html
@@ -44,9 +41,9 @@ css:
 ```
 
 ## 2. 定位 + margin负值  
-该方法需要知道内容的宽和高，然后上边距是负的二分之一高：`margin-top: -(1/2)\*高`，左边距是负的二分之一宽：`margin-left: -(1/2)\*宽`。  
+该方法需要知道内容的宽和高，然后上边距是负的二分之一高：`margin-top: -(1/2)*高`，左边距是负的二分之一宽：`margin-left: -(1/2)*宽`。  
 如果内容的宽高是不固定的，可用其他几种方法。  
-demo见：[http://runjs.cn/code/vu4pvcxq](http://runjs.cn/code/vu4pvcxq)
+demo见：[http://runjs.cn/detail/vu4pvcxq](http://runjs.cn/detail/vu4pvcxq)
 
 html:
 ```html
@@ -73,7 +70,7 @@ css:
 ## 3. 定位 + translate
 通过css3的`transform: translate(-50%, -50%);`属性来实现。  
 别忘记浏览器前缀：`-webkit-`, `-moz-`, `-ms-`, `-o-`等。  
-demo见：[http://runjs.cn/code/ivcqj2rn](http://runjs.cn/code/ivcqj2rn)
+demo见：[http://runjs.cn/detail/ivcqj2rn](http://runjs.cn/detail/ivcqj2rn)
 
 html:
 ```html
@@ -100,7 +97,7 @@ css:
 
 如果一个标签没有定义`height`属性(包括百分比高度)，那么其最终表现的高度一定是由`line-height`起作用。
 
-demo见：[http://runjs.cn/code/4pwejbo0](http://runjs.cn/code/4pwejbo0)
+demo见：[http://runjs.cn/detail/4pwejbo0](http://runjs.cn/detail/4pwejbo0)
 
 html代码:
 ```html
