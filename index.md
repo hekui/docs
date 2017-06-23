@@ -3,17 +3,17 @@
 ## 代码在线调试平台：
 - [runjs](http://runjs.cn/)（开源中国旗下的，**国内打开速度快**）
 - [Codepen](http://codepen.io/) (全世界最受欢迎的代码调试平台，支持sass,less,coffeescript等等)  
-- 还有些其他的，[jsFiddle](https://jsfiddle.net/)，[jsBin](http://jsbin.com/)，都是国外的。
+- 其他：[jsFiddle](https://jsfiddle.net/)，[jsBin](http://jsbin.com/)。
 
 ## CSS
 - [CSS3参考手册](http://www.css88.com/book/css/)
 
-CSS预处理器框架:  
+CSS预处理器:  
 - [stylus](http://www.zhangxinxu.com/jq/stylus)
 - [sass](http://www.sass.hk/)
 - [less中文网](http://lesscss.cn/)
 
-CSS后处理器框架：  
+CSS后处理器：  
 - [postcss(英文官网)](http://postcss.org/)  
 有一个非常好用的插件：[autoprefixer](https://github.com/postcss/autoprefixer)，用来向css添加浏览器前缀（`-webkit-`,`-moz-`,`-o-`,`-ms-`等），使用的是[Can I Use](http://caniuse.com/)的数据来决定哪些前缀是需要的。
 
@@ -54,6 +54,7 @@ Icon Font:
 - [vue官网](https://vuejs.org/)
 - [vue-router](https://router.vuejs.org/)
 - [vuex](https://vuex.vuejs.org/)
+- [axios](https://github.com/mzabriskie/axios)
 - [vue 模板](https://github.com/vuejs-templates) `vue-cli` 快速开始
  - [webpack](https://github.com/vuejs-templates/webpack)
 
@@ -65,8 +66,11 @@ Icon Font:
 ## Git教程
 - 廖雪峰：[Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
-## 前端自动化
-- [Webpack 官网]()
+## 前端工程化
+
+#### Webpack
+- [官网](https://webpack.js.org/)，[官网-中文文档](https://doc.webpack-china.org)
+- [awesome-webpack-cn](https://github.com/webpack-china/awesome-webpack-cn)，webpack优秀中文文章
 - [Webpack 2 中文文档](http://www.css88.com/doc/webpack2/)
 
 ## 前端数据模拟
