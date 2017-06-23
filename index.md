@@ -56,12 +56,12 @@ Icon Font:
 - [vuex](https://vuex.vuejs.org/)
 - [axios](https://github.com/mzabriskie/axios)
 - [vue 模板](https://github.com/vuejs-templates) `vue-cli` 快速开始
- - [webpack](https://github.com/vuejs-templates/webpack)
+  - [webpack](https://github.com/vuejs-templates/webpack)
 
 - element部分：
- - [element-ui 官网](http://element.eleme.io/#/zh-CN)
- - [github 源码](https://github.com/ElemeFE/element)
- - [async-validator](https://github.com/yiminghe/async-validator) `form`表单验证插件
+  - [element-ui 官网](http://element.eleme.io/#/zh-CN)
+  - [github 源码](https://github.com/ElemeFE/element)
+  - [async-validator](https://github.com/yiminghe/async-validator) `form`表单验证插件
 
 ## Git教程
 - 廖雪峰：[Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
