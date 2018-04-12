@@ -13,7 +13,7 @@
    - [.gitignore](#.gitignore)
    - [忽略已经加入git仓库的文件](#忽略已经加入git仓库的文件)
 - [附录](#附录)
-  - [SSH Key创建方法](#SSH Key创建方法)
+  - [SSH Key创建方法](#SSH-Key创建方法)
 
 ## Git
 Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可以分布到不同的机器上。  
