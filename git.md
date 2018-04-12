@@ -12,8 +12,8 @@
  - [忽略文件](#忽略文件)
    - [.gitignore](#.gitignore)
    - [忽略已经加入git仓库的文件](#忽略已经加入git仓库的文件)
-- [附录](#附录)  
-  - [SSH Key创建方法](#SSH-Key创建方法)
+- [附录](#附录)
+ -[SSH Key创建方法](#SSH-Key创建方法)
 
 ## Git
 Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可以分布到不同的机器上。  
@@ -34,6 +34,8 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
 - git clone &lt;path&gt; 克隆远端库到本地（切换分支也是这个命令）
 - git push origin &lt;branch&gt; 推送分支到远程库
 
+- git config --global user.name "username"
+- git config --global user.email "username@163.com"
 
 
 
