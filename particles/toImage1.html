@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{background-color: #0c1328;position: absolute;left: 0;top: 0;right: 0;bottom: 0;}
+    .btn-group {
+        position: absolute;
+        top: 10px;
+        z-index: 100;
+    }
+    a {
+        text-decoration: none;
+        padding: 5px 10px;
+        color: white;
+        background: orange;
+    }
+    .star{
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 1
+    }
+  </style>
+</head>
+<body>
+    <div class="btn-group">
+      <a href="javascript:animate1()" class="btn image-btn">效果一(粒子位置无偏移，粒子数比率1)</a>
+      <a href="javascript:animate2()" class="btn image-btn">效果二(粒子位置无偏移，粒子数比率0.5)</a>
+      <a href="javascript:animate3()" class="btn image-btn">效果三(粒子位置有偏移，粒子数比率0.5)</a>
+      
+    </div>
+    <canvas id="myCanvas">
+        您的浏览器不支持canvas。
+    </canvas>
+    <canvas id="star" class="star">
+        您的浏览器不支持canvas。
+    </canvas>
+    <script src="js/easing.js"></script>
+<script>
+
+  var canvas = {},
+    image = {},
+    requestId = 0,
+    deviation = true, // 粒子位置是否随机偏移
+    particleRatio = 0.5; //粒子数比率，占图片宽高的比率
+	var particles = [];
+	
+
+function animate1(){
+  deviation = false
+  particleRatio = 1
+  init()
+}
+function animate2(){
+  deviation = false
+  particleRatio = 0.5
+  init()
+}
+function animate3(){
+  deviation = true
+  particleRatio = 0.5
+  init()
+}
+
+function clear(){
+  canvas.ctx.clearRect(0, 0, 1041, 930);
+}
+
+
+	function init(){
+    canvas = {}
+    image = {}
+    requestId = 0
+    particles = []
+    
+	  // 获取canvas元素
+    canvas.obj = document.getElementById('myCanvas');
+
+    if(canvas.obj.getContext) {
+
+      // 获取渲染上下文
+      canvas.ctx = canvas.obj.getContext('2d');
+
+      // 设置画布大小为屏幕宽高
+      canvas.w = canvas.obj.width = document.body.clientWidth;
+      canvas.h = canvas.obj.height = document.body.clientHeight;
+
+      // 清空画布
+      canvas.ctx.clearRect(0, 0, canvas.w, canvas.h);
+
+      // 新建一个image对象
+      var img = new Image();
+
+      // 图像加载完后
+      img.onload = function() {
+        // 把图像信息保存在image里面
+        image.obj = img;
+        image.w = img.width;
+        image.h = img.height;
+        image.x = parseInt(canvas.w/2 - image.w/2);
+        image.y = 200;
+
+        // 把图像绘制到画布坐标为(100,100)的地方
+        canvas.ctx.drawImage(image.obj, image.x, image.y, image.w, image.h);
+
+        image.imageData = canvas.ctx.getImageData(image.x, image.y, image.w, image.h);
+        // console.log('image.imageData', image.imageData)
+        // 计算出符合要求的像素
+        calculate();
+
+        // 渲染到画布上
+        render();
+      };
+
+      //设置image的source
+      img.src = 'img/isux.png';
+    }
+  }
+
+  
+  // 计算并保存坐标
+	function calculate() {
+		var len = image.imageData.length;
+    // 只保存100行，100列的像素值
+    // 控制最终粒子数
+		var cols = image.w * particleRatio,
+			rows = image.h * particleRatio;
+		// 设成150行，100列后每个单元的宽高
+		var s_width = parseInt(image.w/cols),   
+      s_height = parseInt(image.h/rows);
+      
+		var pos = 0; // 数组中的位置
+		var par_x, par_y;  // 粒子的x,y坐标
+		var data = image.imageData.data;  // 像素值数组
+		for(var i = 0; i < cols; i++) {
+			for(var j = 0; j < rows; j++) {
+
+				// 计算(i,j)在数组中的R的坐标值
+        pos = (j*s_height*image.w + i*s_width) * 4;
+        
+        // console.log('data[pos]', data[pos])
+        // console.log('data[pos+1]', data[pos+1])
+        // console.log('data[pos+2]', data[pos+2])
+        // console.log('data[pos+3]', data[pos+3])
+
+				// 判断像素透明度值是否符合要求
+				if(data[pos+3] > 0){
+					var particle = {
+            x0: (image.x + image.w / 2),
+            y0: (image.y + image.h / 2),
+						// x,y值都随机一下  粒子偏移量
+						// x1: image.x + i*s_width + (Math.random() - 0.5)*20,
+            // y1: image.y + j*s_height + (Math.random() - 0.5)*20,
+            x1: image.x + i*s_width + (deviation ? (Math.random() - 0.5)*10 : 0),
+            y1: image.y + j*s_height + (deviation ? (Math.random() - 0.5)*10 : 0),
+            fillStyle: 'rgba('+ data[pos]+','+ data[pos+1] +','+ data[pos+2] +','+ data[pos+3] +')' || "rgba(26,145,211,1)",
+            delay: j / 20,
+            currTime: 0,
+            count: 0,
+            duration: parseInt(2000 / 16.66),
+            interval: parseInt(Math.random() * 10 * 10),
+            // ease: a.ease,
+            // ratioX: a.ratioX,
+            // ratioY: a.ratioY
+					}
+					// 根据图像不同的色值来设定粒子色值
+					// if(data[pos+1] < 175 && data[pos+2] < 10) {
+					// 	particle.fillStyle = '#ffa900';
+					// } else if(data[pos+1] < 75 && data[pos+1] > 50) {
+					// 	particle.fillStyle = '#ff4085';
+					// } else if(data[pos+1] < 220 && data[pos+1] > 190) {
+					// 	particle.fillStyle = '#00cfff';
+					// } else if(data[pos+1] < 195 && data[pos+1] > 175) {
+					// 	particle.fillStyle = '#9abc1c';
+					// }
+					// 符合要求的粒子保存到数组里
+					particles.push(particle);
+				}
+			}
+		}
+  }
+
+  function draw() {
+    canvas.ctx.clearRect(0, 0, canvas.w, canvas.h);
+    var len = particles.length;
+    var cur_particle = null;
+    for (var i = 0; i < len; i++) {
+      cur_particle = particles[i];
+      canvas.ctx.fillStyle = cur_particle.fillStyle;
+      canvas.ctx.fillRect(cur_particle.x1, cur_particle.y1, 1, 1)
+    }
+  }
+
+	//绘图案
+	function render() {
+		//清空画布					
+		canvas.ctx.clearRect(0,0,canvas.w,canvas.h);
+
+		var len = particles.length;
+    var curr_particle = null;
+    var cur_x,cur_y;
+    var cur_time = 0, duration = 0, cur_delay = 0, j = 1, g = 1;
+
+		for(var i = 0; i < len; i++) {
+      curr_particle = particles[i];
+      // 如果单位时间超过delay,开始
+      if(curr_particle.count++ > curr_particle.delay){
+        //设置填充颜色
+        canvas.ctx.fillStyle = curr_particle.fillStyle;
+        
+        //获取当前的time和持续时间和延时
+        cur_time = curr_particle.currTime;
+        duration = curr_particle.duration;
+        cur_delay = curr_particle.interval;
+        // cur_delay = 0
+        // 如果最后一个粒子动画也执行完了则停止动画并return
+        if (particles[len - 1].duration + particles[len - 1].interval < particles[len - 1].currTime / 2) {
+          // 停止动画
+          cancelAnimationFrame(requestId)
+          draw();
+          console.log('end')
+          return ;
+        }else{
+          if (cur_time < duration + cur_delay) {
+            if (cur_time >= cur_delay) {
+              // cur_x = window.easeInOutQuad(cur_time, curr_particle.x0, curr_particle.x1 - curr_particle.x0, duration)
+              // cur_y = window.easeInOutQuad(cur_time, curr_particle.y0, curr_particle.y1 - curr_particle.y0, duration)
+              cur_x = window.Easing.easeInOutQuad((cur_time - cur_delay) * j, curr_particle.x0, (curr_particle.x1 - curr_particle.x0) * j, duration);
+              cur_y = window.Easing.easeInOutQuad((cur_time - cur_delay) * g, curr_particle.y0, (curr_particle.y1 - curr_particle.y0) * g, duration);
+
+              canvas.ctx.fillRect(cur_x, cur_y, 1, 1)
+            }
+          } else {
+            //绘粒子到画布上
+            canvas.ctx.fillRect(curr_particle.x1, curr_particle.y1, 1, 1)
+          }
+        }
+        curr_particle.currTime += Math.random() + 0.5
+      }
+    }
+    
+    //重复绘制
+	  requestId = requestAnimationFrame(render);
+  }
+
+init();
+
+
+let s1, s2 
+
+// star 
+function Star(config){
+  this.config = {
+    num: 100
+  }
+  this.canvas = {}
+  var star = document.getElementById(config.el)
+  star.width = this.canvas.w = document.body.clientWidth
+  star.height = this.canvas.h = document.body.clientHeight
+  this.canvas.obj = star
+
+  this._init()
+}
+Star.prototype = {
+  raf: 0,
+  array: [],
+  _init: function(){
+    // 获取渲染上下文
+    this.canvas.ctx = this.canvas.obj.getContext('2d');
+
+    this._calculate()
+  },
+  _calculate: function () {
+    for(var i = 0; i < this.config.num; i++){
+      this.array.push({
+        x0: Math.random() * this.canvas.w,
+        y0: Math.random() * this.canvas.h,
+        x1: Math.random() * this.canvas.w,
+        y1: Math.random() * this.canvas.h,
+        r: Math.random() * 3 ,
+        opacity: Math.random(),
+        count: 0,
+        currTime: 0,
+        // duration: parseInt(2000 / 16.66),
+        duration: 5000 / 16.6,
+        delay: parseInt(Math.random() * 100)
+      })
+    }
+    s1 = new Date().getTime()
+    this._render()
+  },
+  _render: function () {
+    // 清空画布
+    this.canvas.ctx.clearRect(0, 0, this.canvas.w, this.canvas.h);
+
+    // console.log('this', this)
+    var len = this.array.length
+    for(var i = 0; i < len; i++){
+      var item = this.array[i]
+      var ctx = this.canvas.ctx
+
+      // if(i === 0){
+      //   console.log('item.currTime', item.currTime)
+      // }
+
+      // if(i === 0 && item.currTime >= item.duration){
+      //   var newArray = []
+      //   this.array.forEach(p => {
+      //     newArray.push({
+      //       x0: p.x1,
+      //       y0: p.y1,
+      //       x1: Math.random() * this.canvas.w,
+      //       y1: Math.random() * this.canvas.h,
+      //       r: p.r,
+      //       opacity: p.opacity,
+      //       currTime: 0,
+      //       duration: p.duration,
+      //     })
+      //   })
+      //   this.array = newArray;
+
+      //   // console.log('cancel')
+      //   // s2 = new Date().getTime()
+      //   // console.log('cost time:', s2-s1)
+      //   // cancelAnimationFrame(this.raf)
+      //   // // this._calculate()
+      //   // return ;
+      // }
+      // 如果单位时间超过delay,开始
+      if(item.count++ > item.delay){
+        if (item.currTime >= item.delay) {
+          var cur_x = window.Easing.linear(item.currTime - item.delay, item.x0, (item.x1 - item.x0), item.duration);
+          var cur_y = window.Easing.linear(item.currTime - item.delay, item.y0, (item.y1 - item.y0), item.duration);
+
+          ctx.beginPath();
+          ctx.arc(cur_x, cur_y, item.r, 0, 2 * Math.PI);
+          ctx.fillStyle = 'rgba(255, 255, 255, '+ item.opacity / (Math.random() / 10) +')';
+          ctx.fill();
+        }else{
+          // ctx.beginPath();
+          // ctx.arc(item.x1, item.y1, item.r, 0, 2 * Math.PI);
+          // ctx.fillStyle = 'rgba(255, 255, 255, '+ item.opacity / (Math.random() / 10) +')';
+          // ctx.fill();
+        }
+        item.currTime += 1
+      }
+      // item.currTime += Math.random() + 0.5
+      // ctx.stroke();
+    }
+    this.raf = requestAnimationFrame(this._render.bind(this))
+  },
+}
+
+// var s = new Star({
+//   el: 'star'
+// })
+// s._animation();
+</script>
+</body>
+</html>

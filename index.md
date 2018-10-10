@@ -17,6 +17,13 @@ CSS后处理器：
 - [postcss(英文官网)](http://postcss.org/)  
 有一个非常好用的插件：[autoprefixer](https://github.com/postcss/autoprefixer)，用来向css添加浏览器前缀（`-webkit-`,`-moz-`,`-o-`,`-ms-`等），使用的是[Can I Use](http://caniuse.com/)的数据来决定哪些前缀是需要的。
 
+## 图片
+
+图片压缩：
+- [tinypng](https://tinypng.com/)，有损压缩图片  
+
+Css Sprite:  
+
 ## 字体
 网页中图标系统：  
 

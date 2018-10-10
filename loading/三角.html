@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>三角形loading...</title>
+  <style>
+  body{
+    background-color: #000;
+  }
+  .loading-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+  .loading-box i{
+    width: 100px;
+    height: 100px;
+    display: block;
+    background: url(img/b.png);
+    background-size: contain;
+    animation: loadingo 6s infinite linear, loadingr 6s infinite linear;
+    transform-origin: 55% 55%;
+    opacity: 0;
+
+    position: absolute;
+    left: -60px;
+    top: -50px;
+  }
+  .loading-box i:nth-of-type(1){
+    animation-delay: .1s;
+  }
+  .loading-box i:nth-of-type(2){
+    animation-delay: .7s;
+  }
+  .loading-box i:nth-of-type(3){
+    animation-delay: 1.3s;
+  }
+  .loading-box i:nth-of-type(4){
+    animation-delay: 1.9s;
+  }
+  .loading-box i:nth-of-type(5){
+    animation-delay: 2.5s;
+  }
+  .loading-box i:nth-of-type(6){
+    animation-delay: 3.1s;
+  }
+  .loading-box i:nth-of-type(7){
+    animation-delay: 3.7s;
+  }
+  .loading-box i:nth-of-type(8){
+    animation-delay: 4.3s;
+  }
+  .loading-box i:nth-of-type(9){
+    animation-delay: 4.9s;
+  }
+  .loading-box i:nth-of-type(10){
+    animation-delay: 5.5s;
+  }
+  @keyframes loadingo{
+    0%{
+      opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+  @keyframes loadingr{
+    0%{
+      transform: rotate(0deg) scale(1);
+    }
+    50%{
+      transform: rotate(-45deg) scale(0.55);
+    }
+    100%{
+      transform: rotate(-90deg) scale(0.1);
+    }
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="loading-box">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+  </div>
+</body>
+</html>

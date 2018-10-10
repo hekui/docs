@@ -13,7 +13,7 @@
    - [.gitignore](#.gitignore)
    - [忽略已经加入git仓库的文件](#忽略已经加入git仓库的文件)
 - [附录](#附录)
-  - [SSH Key创建方法](#SSH Key创建方法)
+  - [SSH Key创建方法](#SSH-Key创建方法)
 
 ## Git
 Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可以分布到不同的机器上。  
@@ -45,7 +45,7 @@ Git是分布式版本控制系统（而SVN不是），同一个Git仓库，可�
    git reset HEAD^^ --hard  回退到上上一个版本  
    git reset HEAD~100 --hard 回退到上100个版本  
    git reset &lt;commit_id&gt; --hard  回退到某次commit_id的版本（通过`git reflog`查看commit_id）  
-
+- git push -f origin develop 将回退提交到远程。（适用于已经push到远程的情况。）
 ### 撤销修改（未commit）
 - git checkout -- &lt;file&gt; 丢弃工作区的修改（在工作区做了修改，但还未`git add`时）
 - git reset HEAD &lt;file&gt; 把暂存区的修改撤销掉，重新放回工作区(已经`git add`，但未`git commit`)

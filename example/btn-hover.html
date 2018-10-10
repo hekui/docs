@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    :root{
+      --red: #f72359;
+    }
+    .btn{
+      position: relative;
+      background-color: var(--red);
+      border-radius: 100px;
+      width: 200px;
+      padding: 10px 20px;
+      color: #fff;
+      line-height: 1;
+      text-align: center;
+      box-sizing: border-box;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .btn span{
+      position: relative; z-index: 10;
+    }
+    .btn::after{
+      --size: 0;
+
+      content: " ";
+      position: absolute;
+      z-index: 0;
+      top: var(--y);
+      left: var(--x);
+      display: block;
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(circle closest-side, #4405f7, transparent);
+      transform: translate(-50%, -50%);
+      transition: width .2s ease, height .2s ease;
+    }
+    .btn:hover::after{
+      --size: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="btn">
+      <span>鼠标移上来，看效果</span>
+    </div>
+  </div>
+  <script>
+    var btn = document.querySelector('.btn')
+    btn.onmousemove = function(e){
+      var target = e.target
+      var x = e.pageX - target.offsetLeft;
+      var y = e.pageY - target.offsetTop;
+      btn.style.setProperty('--x', x + 'px')
+      btn.style.setProperty('--y', y + 'px')
+    }
+  </script>
+</body>
+</html>
