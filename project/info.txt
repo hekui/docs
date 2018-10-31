@@ -1,0 +1,257 @@
+oa 
+CJ00386 hek142536
+redmine
+hekui hek142536
+
+进程占用处理：
+netstat -ano|findstr "[8088]"
+tskill [PID]
+
+APP包下载
+买房吗 http://fir.im/mfmca03b  访问密码：mfm123
+
+买房吗 百度统计  
+账号:chuangjiame
+密码:Cjmym@2017
+
+房观察 百度统计
+账号：fangguancha
+密码：fangguancha.123
+
+【生产环境IP】
+47.93.155.111:443 K8S生产环境
+47.95.126.85:443 迁出后的新环境
+
+【接口文档】
+===============================================================
+apimanager，是java端接口，以及数据库。没有node端接口。
+http://apimanager.chuangjia.me
+dev chuangjia@2016
+
+
+【微信公众平台】
+===============================================================
+买房吗服务号 https://mp.weixin.qq.com/
+账号：chenliang@chuangjia.me
+密码：maifangma2016
+
+创家生活服务号 https://mp.weixin.qq.com/
+账号：weixin@chuangjia.me
+密码：638500
+
+房观察订阅号   https://mp.weixin.qq.com/
+账号：fanggc@maifang365.com
+密码：fangguancha
+
+创享车 服务号
+帐号：dengwenfeng@chuangjialive.com
+密码：chuang.che
+
+创享show 服务号
+帐号：2558562466@qq.com
+密码：chuangjia123
+
+
+微信  https://open.weixin.qq.com
+账号：hhudengwenfeng@163.com
+密码：maifangma2016
+
+腾讯  http://op.open.qq.com
+账号:app@chuangjia.me
+密码：Cd@2016 
+
+
+微信支付 商户平台
+https://pay.weixin.qq.com
+
+买房吗 服务号
+商户名称：成都房观察文化传播有限公司
+联系人：陈亮
+账号：1359109902@1359109902
+密码：030267
+
+房观察  订阅号
+商户名称：成都瑞智创家网络科技有限公司
+简称：房观察
+联系人：万小平
+账号：1486209402@1486209402
+密码：473253
+
+创家生活 服务号  
+商户名称：成都汇智天成文化传播有限公司
+简称：创家Live+
+账号：1374183402
+密码：681408
+
+创享车 服务号
+商户名称：成都升维网络科技有限公司
+简称：创享车
+账号：1509086221（需微信扫码登录，hekui@1509086221）
+密码：cxc@2018
+
+
+
+
+1【创享秀】微博账号于20180703申请注册，注册信息如下：
+账号：18981757721 密码 chuangjia123  
+
+
+微信小程序
+===============================================================
+创享show微信公众号（运营者郭宪郎）
+账号：2558562466@qq.com   密码 chuangjia123  (QQ密码  tengxunfangchan2)
+小程序账号：lisha@chuangjialive.com      密码chuangjia123
+
+
+
+房观察：
+test@chuangjialive.com fang.123
+阿拉丁统计
+网址：https://www.aldwx.com/
+账号：17713584537   密码：ruizhi123
+平台绑定的微信号：账号：17713584537  密码：ruizhi123
+
+
+
+何奎个人的 appid:wxd90415eaffdd5638
+===============================================================
+
+
+创享车 - 项目信息
+===============================================================
+微信服务号：买房吗服务号
+创享车服务号：
+帐号：dengwenfeng@chuangjialive.com 
+密码：chuang.che
+生产环境
+前台：https://m.maifangma.com/cxc/
+后台：https://psbm.maifangma.com/login
+测试环境
+前台：http://che.test1.maifangma.com/
+后台：http://psbm.test1.maifangma.com/login (admin,admin)
+
+微信支付需要配置的信息：
+需要在公众平台添加API域名，以及
+参见下方sso-cxc
+appId=wxcf011c09f1aa9a56 // 公众平台 - 开发 - 基本配置
+appSecret=54bcc092f05fdf4df7cf1773e4cbffff // 公众平台 - 开发 - 基本配置
+mchId=1509086221  // 商户号ID 公众平台 - 微信支付
+secret=cxc2018 // 任意指定，自己系统使用
+partnerKey=cxc2018cxc2018cxc2018cxc2018cxc8 // 商户平台 - 账户中心 - API安全
+webUrl=https://wxsso.maifangma.com/cxc/ // 商户平台 - 产品中心 - 开发配置
+
+支付账单中的“商品”，对应的是body字段。
+===============================================================
+
+
+wechat-sso
+===============================================================
+sso
+redisHost=192.168.70.4
+redisPort=6379
+redisDB=3
+appId=wx612d369d94b7a825
+appSecret=8443fb4ddb62da6659aab5b31cd068cf
+secret=hf8VfLJArETPKcnl
+webUrl=https://prj.chuangjia.me/wxsso
+
+sso-mfm 
+redisHost=192.168.70.4
+redisPort=6379
+redisDB=4
+appId=wxb91f62f0fee58dc0 
+appSecret=15cbe8a6c97021c5fe685e8c72ac4c31
+mchId=1359109902
+secret=wks0d2f9s9
+webUrl=https://zt.maifangma.com/wxsso
+interfaceUrl=https://api-proxy.maifangma.com/broker/broker/bingding
+
+sso-fgc
+redisHost=192.168.70.4
+redisPort=6379
+redisDB=5
+appId=wxd0d2a43caf8e173c
+appSecret=c14e98601d7bc4f5c41a29b66a8d4cca
+secret=i39s5ox
+webUrl=https://m.fangguancha.com/wxsso/
+
+
+sso-cxc
+redisHost=192.168.70.4
+redisPort=6379
+redisDB=6
+appId=wxcf011c09f1aa9a56
+appSecret=54bcc092f05fdf4df7cf1773e4cbffff
+mchId=1509086221
+secret=cxc2018
+partnerKey=cxc2018cxc2018cxc2018cxc2018cxc8
+webUrl=https://wxsso.maifangma.com/cxc/
+
+
+【测试环境】
+===============================================================
+
+买房吗
+https://m.test1.maifangma.com/
+后台
+https://admin.test1.maifangma.com
+admin
+
+
+房观察
+https://m.test1.fangguancha.com/
+后台
+https://admin.test1.fangguancha.com
+admin
+123456
+===============================================================
+static-zt.maifangma.com // 买房吗服务号JS安全域名
+
+
+【loadtest】
+===============================================================
+loadtest -c 10 --rps 100 http://localhost:8088/
+-c concurrency
+-t timelimit
+--rps requestsPerSecond
+
+
+
+
+
+
+
+
+
+
+
+
+
+区块链代币市场
+
+sosobtc海外版：www.sosobtc.me
+火币海外版：www.huobi.pro
+酷币网：www.coolcoin.com
+元宝海外：www.allcoin.com
+币创海外版：www.uex.com
+聚币海外:www.coinegg.com 
+聚币帐号可直接登录。
+币久海外版：www.cex.com
+OK海外版:www.okex.com
+
+
+常用九大外网：
+www.poloniex.com
+www.bittrex.com
+www.liqui.io
+www.bitstamp.com
+www.hitbtc.com
+www.bitfinex.com
+www.kraken.com
+www.bithumb.com 韩国
+www.coincheck.com 日本第一个牌照
+特别说明:
+云币海外版:www.big.one 此站所有权已转外国人，暂时没有发行代币计划
+科学上网建议蓝灯，傻瓜式操作(链接就不发了，容易被和谐)
+sosobtc海外版：www.sosobtc.me 可查看全部行情
+最全平台网址，赶紧收藏
