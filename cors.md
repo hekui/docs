@@ -2,18 +2,22 @@
 CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。   
 参考：[HTTP访问控制（CORS）(https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
 
+
 > 跨域资源共享(CORS) 是一种机制，它使用额外的 `HTTP` 头来告诉**浏览器**让运行在一个 `origin (domain)` 上的Web应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器不同的域或端口请求一个资源时，资源会发起一个跨域 HTTP 请求。  
 > 出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非使用CORS头文件。  
 > “简单请求”不会触发CORS预检请求。 [详见:简单请求]  (https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82)  
 
-由上可见，对资源的跨域访问是由浏览器参与完成（无论成功/失败）。
 
-## 跨域访问实现原理  
-对于跨域请求，首先会由浏览器发起一个预检请求（[HTTP 请求方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods)  是OPTIONS），若服务端返回成功，浏览器才会发送实际请求，若服务端返回失败，则浏览器抛出一个错误。如下图所示： 
+由上可见，跨域访问是由浏览器参与完成的。 
+
+## 跨域访问实现原理   
+对于跨域请求，首先会由浏览器发起一个OPTIONS的预检请求，若服务端返回成功（允许跨域），浏览器才会发送实际请求，若服务端返回失败，则浏览器抛出一个错误。如下图所示： 
+
+- [HTTP 请求方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods)
  
 ![](./images/prelight.png)
 
-## 代码示例
+## 服务端代码示例
 
 ```javascript
 // node+express 服务端示例代码
