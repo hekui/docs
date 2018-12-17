@@ -91,6 +91,14 @@ Mock.js 生成随机数据，拦截 Ajax 请求。让前端能独立于后端运
 - [Chrome 开发者工具](http://www.css88.com/doc/chrome-devtools/)
 - [Can I Use](http://caniuse.com/)（检测各浏览器对HTML5、CSS3的兼容性支持情况。还可以在cmd中实现，[详见这里](http://div.io/topic/1174)。）
 
+## 移动端调试
+移动端调试可以考虑： 
+- 远程调试：weinre，OperaMobile/IOSSafari/ChromeforAndroid/UC浏览器
+- vConsole，腾讯出的一个轻量的、可拓展、针对手机网页的前端开发者调试面板。  
+  github: [https://github.com/Tencent/vConsole/](https://github.com/Tencent/vConsole/)，有中文文档。  
+  demo: [http://wechatfe.github.io/vconsole/demo.html](http://wechatfe.github.io/vconsole/demo.html)
+- TBS Studio，是一个可以向Chrome一样调试远程微信浏览器页面的强大工具。  
+  官网：[https://x5.tencent.com/tbs/guide/debug/season1.html](https://x5.tencent.com/tbs/guide/debug/season1.html)
 
 ## Node教程
 - [Node.js 中文网文档](http://nodejs.cn/api/)(英文不好的同学的福音)

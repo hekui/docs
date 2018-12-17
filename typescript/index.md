@@ -16,6 +16,10 @@ tsc greeter.ts
 ```
 输出结果为一个greeter.js文件。
 
+## 语法
+[官方手册](https://www.tslang.cn/docs/handbook/basic-types.html)  
+[学习提炼](./basic-types.md)
+
 ## 工程化
 
 TypeScript使用`tsconfig.json`文件管理工程配置。  
