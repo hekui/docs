@@ -5,6 +5,9 @@
 - [Codepen](http://codepen.io/) (全世界最受欢迎的代码调试平台，支持sass,less,coffeescript等等)  
 - 其他：[jsFiddle](https://jsfiddle.net/)，[jsBin](http://jsbin.com/)。
 
+## HTML
+### Web Assembly
+
 ## CSS
 - [CSS3参考手册](http://www.css88.com/book/css/)
 
@@ -75,11 +78,14 @@ Icon Font:
 - [随查手册](./git.md)
 
 ## 前端工程化
-
+### Task Runners
+`npm scripts`
+### Module Bundlers
 #### Webpack
 - [官网](https://webpack.js.org/)，[官网-中文文档](https://doc.webpack-china.org)
 - [awesome-webpack-cn](https://github.com/webpack-china/awesome-webpack-cn)，webpack优秀中文文章
 - [Webpack 2 中文文档](http://www.css88.com/doc/webpack2/)
+
 
 ## 前端数据模拟
 Mock.js 生成随机数据，拦截 Ajax 请求。让前端能独立于后端运行。
@@ -103,6 +109,19 @@ Mock.js 生成随机数据，拦截 Ajax 请求。让前端能独立于后端运
 ## Node教程
 - [Node.js 中文网文档](http://nodejs.cn/api/)(英文不好的同学的福音)
 - 阮一峰：[Node.js](http://javascript.ruanyifeng.com/nodejs/basic.html)(这个也是中文的)
+
+## 类型检查器
+TypeScript
+
+## 服务端渲染
+Vue.js: [Nuxt.js](https://zh.nuxtjs.org/)  
+React.js: Next.js,After.js  
+Angular.js: Universal.js
+
+
+## 桌面应用
+Electron,Proton Native,Carlo
+
 
 ## [微信周边](./weixin/index.md)
 
