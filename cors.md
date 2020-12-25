@@ -4,8 +4,8 @@ CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource s
 
 
 > 跨域资源共享(CORS) 是一种机制，它使用额外的 `HTTP` 头来告诉**浏览器**让运行在一个 `origin (domain)` 上的Web应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器不同的域或端口请求一个资源时，资源会发起一个跨域 HTTP 请求。  
-> 出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非使用CORS头文件。  
-> “简单请求”不会触发CORS预检请求。 [详见:简单请求]  (https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82)  
+> 出于安全原因，浏览器限制**从脚本内发起的跨源HTTP请求**(其他资源，如图片、css、js等不跨域)。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非使用CORS头文件。  
+> “简单请求”不会触发CORS预检请求。 (详见: [简单请求](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82))    
 
 
 由上可见，跨域访问是由浏览器参与完成的。 
@@ -20,7 +20,7 @@ CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource s
 ## 服务端代码示例
 
 ```javascript
-// node+express 服务端示例代码
+// node + express 服务端示例代码
 app.use(function (req, res, next) {
   res.set({
     "Access-Control-Allow-Origin": "*",
@@ -28,7 +28,8 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Credentials": true,
     "Access-Control-Allow-Headers": "Content-Type,X-Requested-With",
   })
-  next();
+  if(req.method == "OPTIONS") res.sendStatus(200) // 让options请求快速返回
+  else next()
 });
 ```
 ## 参数解释

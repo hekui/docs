@@ -54,5 +54,25 @@ function buildName(firstName: string, ...restOfName: string[]) {
 let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
 ```
 
+## 函数重载
 
+```javascript
+interface User {
+  name: string;
+  age: number;
+}
+declare function test(para: User): number;
+declare function test(para: number, flag: boolean): number;
 
+const user = {
+  name: 'Jack',
+  age: 666
+};
+
+// ok
+test(user)
+test(123, false)
+
+// Error: 参数不匹配
+test(user, false);
+```

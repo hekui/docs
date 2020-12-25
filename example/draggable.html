@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>拖拽元素</title>
+  <style>
+    .box{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: #f72359;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px;
+    }
+    .draggable{
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="box draggable">可拖拽</div>
+    <div class="box" style=" background-color: blueviolet; left: 300px;">不可拖拽</div>
+  </div>
+  <script>
+    var DragDrop = function(){
+      var dragging = null,
+        diffx = 0, // 鼠标按下时，鼠标与元素左上角的差异位置
+        diffy = 0;
+      function eventHandle(e) {
+        var target = e.target
+        switch (e.type) {
+          case 'mousedown':
+            if (target.className.indexOf('draggable') > -1) {
+              dragging = target
+              diffx = e.clientX - target.offsetLeft
+              diffy = e.clientY - target.offsetTop
+            }
+            break;
+          case 'mousemove':
+            if (dragging !== null) {
+              dragging.style.left = (e.clientX - diffx) + 'px'
+              dragging.style.top = (e.clientY - diffy) + 'px'
+            }
+            break;
+          case 'mouseup':
+            dragging = null
+            break;
+          default:
+            break;
+        }
+      }
+      return {
+        enable: function() {
+          document.addEventListener('mousedown', eventHandle)
+          document.addEventListener('mousemove', eventHandle)
+          document.addEventListener('mouseup', eventHandle)
+        },
+        disable: function() {
+          document.removeEventListener('mousedown', eventHandle)
+          document.removeEventListener('mousemove', eventHandle)
+          document.removeEventListener('mouseup', eventHandle)
+        }
+      }
+    }
+    var d = new DragDrop()
+    d.enable()
+    
+  </script>
+</body>
+</html>

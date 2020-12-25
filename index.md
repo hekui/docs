@@ -6,6 +6,8 @@
 - 其他：[jsFiddle](https://jsfiddle.net/)，[jsBin](http://jsbin.com/)。
 
 ## HTML
+- [impress.js h5幻灯片插件](http://www.webhek.com/post/impress-js.html)
+
 ### Web Assembly
 
 ## CSS
@@ -57,8 +59,9 @@ Icon Font:
 
 ## 数据交互
  - [axios](https://github.com/mzabriskie/axios)，支持并发请求。
+ - [request](https://github.com/request/request)。
  - [superagent](https://github.com/visionmedia/superagent)，同时支持node平台和浏览器端。
- - [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)，node跨域代理插件
+ - [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)，node跨域代理插件。
 
 ## Vue.js 生态
 - [vue官网](https://vuejs.org/)
@@ -77,6 +80,9 @@ Icon Font:
 - 廖雪峰：[Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 - [随查手册](./git.md)
 
+## 规范
+- [注释规范，JSDoc](http://shouce.jb51.net/jsdoc)
+
 ## 前端工程化
 ### Task Runners
 `npm scripts`
@@ -84,7 +90,6 @@ Icon Font:
 #### Webpack
 - [官网](https://webpack.js.org/)，[官网-中文文档](https://doc.webpack-china.org)
 - [awesome-webpack-cn](https://github.com/webpack-china/awesome-webpack-cn)，webpack优秀中文文章
-- [Webpack 2 中文文档](http://www.css88.com/doc/webpack2/)
 
 
 ## 前端数据模拟
@@ -110,7 +115,7 @@ Mock.js 生成随机数据，拦截 Ajax 请求。让前端能独立于后端运
 - [Node.js 中文网文档](http://nodejs.cn/api/)(英文不好的同学的福音)
 - 阮一峰：[Node.js](http://javascript.ruanyifeng.com/nodejs/basic.html)(这个也是中文的)
 
-## 类型检查器
+## 类型检查
 TypeScript
 
 ## 服务端渲染
@@ -125,15 +130,17 @@ Electron,Proton Native,Carlo
 
 ## [微信周边](./weixin/index.md)
 
-#### 公众号开发
+### 公众号开发
 **公众号开发必知**  
 以下引用自：[微信公众平台开发概述](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432)  
 > 为了识别用户，每个用户针对每个公众号会产生一个安全的OpenID，如果需要在多公众号、移动应用之间做用户共通，则需前往微信开放平台，将这些公众号和应用绑定到一个开放平台账号下，绑定后，一个用户虽然对多个公众号和应用有多个不同的OpenID，但他对所有这些同一开放平台账号下的公众号和应用，只有一个UnionID，可以在用户管理-获取用户基本信息（UnionID机制）文档了解详情。
 
 
-#### 微信小程序
+### 小程序开发
 - [官方开发文档](https://developers.weixin.qq.com/miniprogram/dev/)
 - [在小程序中使用iconfont](./weixin/mp/iconfont.md)，将iconfont转换为base64，实现可在小程序中使用iconfont。
+- [accessToken中控服务](./weixin/mp/accessToken.md)
+- [内容安全检查](./weixin/mp/secret.md)
 
 ## Python教程
 - 廖雪峰：[Python教程](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)

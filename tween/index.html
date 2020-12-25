@@ -11,12 +11,36 @@
 <body>
   <div>
     <a href="https://github.com/sole/tween.js" target="_blank">https://github.com/sole/tween.js</a>
+    <p><a href="http://tweenjs.github.io/tween.js/examples/03_graphs.html">TWEEN.Easing</a></p>
   </div>
+  <div id="Number">10.68</div>
   <div id="target" style="position:absolute; top: 100px; left: 100px; border-radius:0px; width: 100px; height: 100px; background: #a0dde9; padding: 1em;">
     hello tween!
   </div>
   <script src="js/Tween.js"></script>
   <script>
+    function animate(time) {
+      requestAnimationFrame(animate);
+      TWEEN.update();
+    }
+    // 数字
+    var num = {
+      value: 10.68
+    }
+    var numTween = new TWEEN.Tween(num)
+      .to({
+        value: 19.56
+      }, 3000)
+      .easing(TWEEN.Easing.Exponential.InOut)
+      .onUpdate((args) => {
+        // console.log(args, num)
+        document.getElementById('Number').innerHTML = Math.floor(num.value * 100) / 100
+      })
+    numTween.delay(1000)
+    numTween.start()
+    animate()
+
+    // 滚动
     var target;
     var position = {
       x: 100,
@@ -35,7 +59,7 @@
           y: 200,
           rotation: 360
         }, 3000)
-        .easing(TWEEN.Easing.Bounce.InOut)
+        .easing(TWEEN.Easing.Exponential.InOut)
         .onUpdate(update)
 
       var tweenBack = new TWEEN.Tween(position)
@@ -47,11 +71,6 @@
       tweenBack.chain(tween)
 
       tween.start();
-    }
-    
-    function animate(time) {
-      requestAnimationFrame(animate);
-      TWEEN.update(time);
     }
 
     function update(x, y){

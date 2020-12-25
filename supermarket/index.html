@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>24 Hours Supermarket</title>
+    <style>
+        *{
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            overflow: hidden;
+        }
+        .street{
+            height: 100vh;
+            background-color: #0b2e4e;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0 6vw 115px;
+        }
+        .street::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 25vh;
+            background-color: #000;
+        }
+        .market{
+            width: 520px; height: 270px; background-color: #fffecc;
+            border: 4px solid #333;
+            box-shadow: 0 22px 110px 12px #f5efa1;
+            border-top-width: 50px;
+            position: relative;
+            display: flex;
+        }
+        .market-name{
+            position: absolute;
+            top: -38px; left: 20px;
+            color: #bdf8ff;
+            font-size: 1.4em;
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            animation: signboardFlashes 5s infinite alternate linear;
+        }
+
+        @keyframes signboardFlashes{
+            0% { opacity: 1; }
+            35% { opacity: 1; }
+            36% { opacity: 0; }
+            37% { opacity: 1; }
+            70% { opacity: 1; }
+            72% { opacity: 0; }
+            73% { opacity: 1; }
+            74% { opacity: 0; }
+            75% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+        .moon{
+            position: absolute;
+            top: -125px; left: -50px;
+            width: 40px; height: 40px;
+            background-color: #ffffc9;
+            border-radius: 50%;
+            box-shadow: 0 0 20px 1px #ffffc9;
+            animation: moonMoves 360s infinite alternate linear;
+        }
+        @keyframes moonMoves {
+            0% { transform: translate(0, 0) }
+            50% { transform: translate(300px, -10px) }
+            100% { transform: translate(600px, 0) }
+        }
+        .market-fold{
+            width: 25%;
+            border: 8px solid #000;
+            position: relative;
+        }
+        .market-fold::before{
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0; 
+            width: 100%; height: 100%;
+            box-shadow: 0 0 2px 1px #f3f1d5;
+        }
+        .cat{
+            --cat-color: #000;
+            position: absolute;
+            left: -200px; bottom: -24px;
+            width: 46px; height: 30px;
+            color: var(--cat-color);
+            background-color: var(--cat-color);
+            border-radius: 30px;
+            animation: catMoves 20s infinite linear;
+        }
+        .cat-head{
+            position: absolute; right: -10px; top: -8px;
+            width: 24px; height: 24px; 
+            background-color: inherit;
+            border-radius: 50%;
+            animation: catHeadMoves .3s infinite linear;
+        }
+        .cat-head::before, .cat-head::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 10px; height: 10px;
+            background-color: inherit;
+            border-radius: 2px;
+        }
+        .cat-head::before{
+            left: 2px;
+            transform: rotate(16deg);
+        }
+        .cat-head::after{
+            right: 2px;
+            transform: rotate(-16deg);
+        }
+        @keyframes catHeadMoves{
+            0% { transform:  translateY(0); }
+            50% { transform:  translateY(2px); }
+            100% { transform:  translateY(0); }
+        }
+        .cat-tail{
+            position: absolute;
+            left: -18px; top: -22px;
+            width: 30px; height: 42px;
+            border-radius: 50%;
+            border: 7px solid var(--cat-color);
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+            transform-origin: right;
+            animation: catTailMoves .3s infinite linear;
+        }
+        @keyframes catTailMoves{
+            0% { transform: rotate(0); }
+            50% { transform: rotate(-3deg); }
+            100% { transform: rotate(0); }
+        }
+        .cat-leg{
+            position: absolute;
+            bottom: -12px;
+            width: 6px; height: 20px;
+            background-color: inherit;
+            border-radius: 3px;
+            transform-origin: top;
+        }
+        .cat-leg__1, .cat-leg__2{
+            left: 5px;
+        }
+        .cat-leg__3, .cat-leg__4{
+            right: 5px;
+        }
+        .cat-leg__1, .cat-leg__3{
+            transform: rotate(24deg);
+            animation: catLegsMoves .6s infinite linear;
+        }
+        .cat-leg__2, .cat-leg__4{
+            transform: rotate(-24deg);
+            animation: catLegsMoves .6s infinite -0.3s linear;
+        }
+        @keyframes catLegsMoves{
+            0% { transform: rotate(36deg); }
+            50% { transform: rotate(-36deg); }
+            100% { transform: rotate(36deg); }
+        }
+        @keyframes catMoves{
+            0% { transform: translateX(0) rotateY(0); }
+            70% { transform: translateX(800px) rotateY(0); }
+            71% { transform: translateX(1000px) rotateY(180deg); }
+            100% { transform: translateX(0) rotateY(180deg); }
+        }
+
+        .market-fold__left{
+            animation: doorMoveToLeft 20s infinite linear;
+        }
+        .market-fold__right{
+            animation: doorMoveToRight 20s infinite linear;
+        }
+        @keyframes doorMoveToLeft {
+            0% { transform: translateX(0); }
+            28% { transform: translateX(0); }
+            30% { transform: translateX(-90%); }
+            54% { transform: translateX(-90%); }
+            56% { transform: translateX(0); }
+            83% { transform: translateX(0); }
+            85% { transform: translateX(-90%); }
+            97% { transform: translateX(-90%); }
+            99% { transform: translateX(0); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes doorMoveToRight {
+            0% { transform: translateX(0); }
+            28% { transform: translateX(0); }
+            30% { transform: translateX(90%); }
+            54% { transform: translateX(90%); }
+            56% { transform: translateX(0); }
+            83% { transform: translateX(0); }
+            85% { transform: translateX(90%); }
+            97% { transform: translateX(90%); }
+            99% { transform: translateX(0); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <figure class="street">
+        <div class="market">
+            <span class="market-name">24 hours</span>
+            <span class="moon"></span>
+            <span class="market-fold"></span>
+            <span class="market-fold market-fold__left"></span>
+            <span class="market-fold market-fold__right"></span>
+            <span class="market-fold"></span>
+            <section class="cat">
+                <div class="cat-head"></div>
+                <span class="cat-tail"></span>
+                <span class="cat-leg cat-leg__1"></span>
+                <span class="cat-leg cat-leg__2"></span>
+                <span class="cat-leg cat-leg__3"></span>
+                <span class="cat-leg cat-leg__4"></span>
+            </section>
+        </div>
+    </figure>
+</body>
+</html>

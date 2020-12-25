@@ -80,12 +80,14 @@ Object.prototype.toString.call(document); //"[object HTMLDocument]"
 ```
 
 
-## 数组拷贝：
+## 数组浅拷贝：
 ```javascript
-var arr =[1, 2, 3];
-var newArr = arr.slice();
+var arr =[1, 2, 3]
+var newArray1 = arr.slice()
+var newArray2 = arr.concat()
+var newArray3 = [...arr]
 ```
-`slice([index][, length])`方法，提取原数组的一部分，原数组不变，返回一个新数组。
+`slice([start][, end])`方法，提取原数组的一部分，原数组不变，返回一个新数组。
 更多：[Array对象详解](./js array.md)
 
 ## 对DOM列表排序:
