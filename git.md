@@ -1,18 +1,24 @@
 
 # Git
 ## 目录：
-- [Git](#Git)
-  - [常见命令](#常见命令)
-  - [版本回退](#版本回退)
-  - [撤销修改](#撤销修改)
-  - [分支管理](#分支管理)
-  - [远程仓库](#远程仓库)
-  - [多人协作](#多人协作)
-  - [标签管理](#标签管理)
-  - [变基](#变基)
-  - [忽略文件](#忽略文件)
-    - [.gitignore](#.gitignore)
-    - [忽略已经加入git仓库的文件](#忽略已经加入git仓库的文件)
+- [Git](#git)
+  - [目录：](#目录)
+  - [Git](#git-1)
+    - [常见命令](#常见命令)
+    - [版本回退（已经commit）](#版本回退已经commit)
+    - [撤销修改（未commit）](#撤销修改未commit)
+    - [分支管理](#分支管理)
+    - [远程仓库](#远程仓库)
+    - [多人协作](#多人协作)
+    - [标签管理](#标签管理)
+    - [变基](#变基)
+    - [忽略文件](#忽略文件)
+      - [.gitignore](#gitignore)
+      - [忽略已经加入git库的文件](#忽略已经加入git库的文件)
+  - [附录：](#附录)
+    - [SSH Key创建方法](#ssh-key创建方法)
+      - [第1步：创建SSH Key。](#第1步创建ssh-key)
+      - [第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：](#第2步登陆github打开account-settingsssh-keys页面)
 
 - [附录](#附录)
   - [SSH Key创建方法](#SSH-Key创建方法)
@@ -96,7 +102,7 @@ If you are sure you want to delete it, run 'git branch -D test'.
 那么我们可能会经历以下一系列的操作：
 ```javascript
 $ git checkout master
-$ git checkout -b issue-123  //创建并切换到分支，并进行bug修改
+$ git checkout -b issue-123  // 创建并切换到分支，并进行bug修改
 $ git commit -m "fix bug 123"
 $ git checkout master
 $ git merge --no-ff -m "merged bug fix 123" issue-123
@@ -105,7 +111,7 @@ $ git branch -d issue-123
 至此，我们就完成了bug：123的修复。接下来我们切换回dev分支。  
 ```javascript
 $ git checkout dev
-$ git status //查看工作区，是干净的。
+$ git status // 查看工作区，是干净的。
 ```
 下面我们来恢复之前的工作现场。  
 - git stash list  查看储藏的现场列表
